@@ -28,7 +28,7 @@ This repo contains the follwing YAML based Azure Pipeline defintions
 Prerequisites:
 - Azure Artifacts
 
-To support publishing and consuming sfpowerscripts packages. Use this quickstart to create a npm feed.
+To support publishing and consuming sfpowerscripts packages. Use this quickstart to create a npm feed and a .npmrc file and add it to secure files
 https://docs.microsoft.com/en-us/azure/devops/artifacts/get-started-npm?view=azure-devops
 https://docs.microsoft.com/en-us/azure/devops/pipelines/tasks/package/npm-authenticate?view=azure-devops
 
