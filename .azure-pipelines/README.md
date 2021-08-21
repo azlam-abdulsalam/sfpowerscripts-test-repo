@@ -26,7 +26,8 @@ This repo contains the follwing YAML based Azure Pipeline defintions
      Delete a particular scratch org fetched from the pool, to be used where the devs dont have access to delete scratch orgs from command line (Free Developer License) 
 
 Prerequisites:
-- Azure Artifacts:
+- Azure Artifacts
+
 To support publishing and consuming sfpowerscripts packages. Use this quickstart to create a npm feed.
 https://docs.microsoft.com/en-us/azure/devops/artifacts/get-started-npm?view=azure-devops
 https://docs.microsoft.com/en-us/azure/devops/pipelines/tasks/package/npm-authenticate?view=azure-devops
