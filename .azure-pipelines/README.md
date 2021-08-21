@@ -1,5 +1,8 @@
 ![image](https://gblobscdn.gitbook.com/assets%2F-MI39dIf1BuKlg_oSIG_%2F-MersLlsLMydZ6V7hfP-%2F-MersUtb9fBk1m9NMuMc%2Fflowdiagram_revised.png?alt=media&token=b613b0a8-99e3-4702-8f38-033cb1d7700d)
 
+
+**Intro:**
+
 This repo contains the follwing YAML based Azure Pipeline defintions
 
 -  validate.yml
@@ -25,17 +28,23 @@ This repo contains the follwing YAML based Azure Pipeline defintions
   - delete-scratchorg-pool.yml
      Delete a particular scratch org fetched from the pool, to be used where the devs dont have access to delete scratch orgs from command line (Free Developer License) 
 
-Prerequisites:
-- Azure Artifacts
+**Getting Started:**
 
-To support publishing and consuming sfpowerscripts packages. Use this quickstart to create a npm feed and a .npmrc file and add it to secure files
-https://docs.microsoft.com/en-us/azure/devops/artifacts/get-started-npm?view=azure-devops
-https://docs.microsoft.com/en-us/azure/devops/pipelines/tasks/package/npm-authenticate?view=azure-devops
+- Setup Azure Artifacts ( NB: You can follow similar approach to add any other Private NPM Registry as well. All you need is the .npmrc file securely stored )
 
-- A variable group  called CICD 
+  - To support publishing and consuming sfpowerscripts packages. Use the below quickstart links to create a npm feed and a .npmrc file
+     https://docs.microsoft.com/en-us/azure/devops/artifacts/get-started-npm?view=azure-devops 
+     https://docs.microsoft.com/en-us/azure/devops/pipelines/tasks/package/npm-authenticate?view=azure-devops
 
-To setup a variable group, follow instructions at 
-https://docs.microsoft.com/en-us/azure/devops/pipelines/library/variable-groups?view=azure-devops&tabs=classic
+- Add this .npmrc file to Azure Pipelines Secure Files with the name .npmrc 
+   
+     https://docs.microsoft.com/en-us/azure/devops/pipelines/library/secure-files?view=azure-devops
+   
+
+- Setup a variable group  called CICD 
+
+   To setup a variable group, follow instructions at 
+   https://docs.microsoft.com/en-us/azure/devops/pipelines/library/variable-groups?view=azure-devops&tabs=classic
 
 - Setup the following variables manually in the earlier created variable group
 
@@ -47,6 +56,6 @@ https://docs.microsoft.com/en-us/azure/devops/pipelines/library/variable-groups?
 
   - SIT_SFDX_AUTH_URL: The auth url to SIT Sandbox, You can retrieve the auth URL by following the ling here https://developer.salesforce.com/docs/atlas.en-us.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference_auth_sfdxurl.htm
 
-  -  scope : Scope for the packages to be published to the repository 
+ -  scope : Scope for the packages to be published to the repository 
 
 
