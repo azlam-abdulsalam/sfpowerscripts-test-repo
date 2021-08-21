@@ -25,23 +25,27 @@ This repo contains the follwing YAML based Azure Pipeline defintions
   - delete-scratchorg-pool.yml
      Delete a particular scratch org fetched from the pool, to be used where the devs dont have access to delete scratch orgs from command line (Free Developer License) 
 
-
-The sample pipelines utilise an azure pipelines variable group called DEVHUB which contains the following variables. As a prerequisite, this has to be setup manually
-- DEVHUB_SFDX_AUTH_URL   : The auth url to DevHub, You can retrieve the auth URL by following the ling here https://developer.salesforce.com/docs/atlas.en-us.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference_auth_sfdxurl.htm
-
-- DEV_SFDX_AUTH_URL: The auth url to Developer Sandbox, You can retrieve the auth URL by following the ling here https://developer.salesforce.com/docs/atlas.en-us.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference_auth_sfdxurl.htm
-
-
-- ST_SFDX_AUTH_URL: The auth url to ST Sandbox, You can retrieve the auth URL by following the ling here https://developer.salesforce.com/docs/atlas.en-us.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference_auth_sfdxurl.htm
-
-
-- SIT_SFDX_AUTH_URL: The auth url to SIT Sandbox, You can retrieve the auth URL by following the ling here https://developer.salesforce.com/docs/atlas.en-us.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference_auth_sfdxurl.htm
-
--  scope : Scope for the packages to be published to the repository 
-
-- Azure Variable group: to configure Auth URL's required for pipelines to connect 
-
-- Azure Artifacts: It supports publishing and consuming npm packages to and from Azure Artifacts feeds and public registries. Use this quickstart to create your feed, set up your .npmrc file, build your project, and publish your npm packages to your feed.
+Prerequisites:
+- Azure Artifacts:
+To support publishing and consuming sfpowerscripts packages. Use this quickstart to create a npm feed.
 https://docs.microsoft.com/en-us/azure/devops/artifacts/get-started-npm?view=azure-devops
 https://docs.microsoft.com/en-us/azure/devops/pipelines/tasks/package/npm-authenticate?view=azure-devops
+
+- A variable group  called CICD 
+
+To setup a variable group, follow instructions at 
+https://docs.microsoft.com/en-us/azure/devops/pipelines/library/variable-groups?view=azure-devops&tabs=classic
+
+- Setup the following variables manually in the earlier created variable group
+
+  - DEVHUB_SFDX_AUTH_URL   : The auth url to DevHub, You can retrieve the auth URL by following the ling here https://developer.salesforce.com/docs/atlas.en-us.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference_auth_sfdxurl.htm
+
+  - DEV_SFDX_AUTH_URL: The auth url to Developer Sandbox, You can retrieve the auth URL by following the ling here https://developer.salesforce.com/docs/atlas.en-us.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference_auth_sfdxurl.htm
+
+  - ST_SFDX_AUTH_URL: The auth url to ST Sandbox, You can retrieve the auth URL by following the ling here https://developer.salesforce.com/docs/atlas.en-us.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference_auth_sfdxurl.htm
+
+  - SIT_SFDX_AUTH_URL: The auth url to SIT Sandbox, You can retrieve the auth URL by following the ling here https://developer.salesforce.com/docs/atlas.en-us.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference_auth_sfdxurl.htm
+
+  -  scope : Scope for the packages to be published to the repository 
+
 
