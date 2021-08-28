@@ -154,8 +154,8 @@ stages:
 #Build all packages (unlocked/source/data) in a repo in parallel, respecting the dependency of each packages and generate artifacts to a provided directory
                 - task: CmdLine@2
                   displayName: 'Build All Packages'
-                  inputs: |
-                      script: 'sfdx sfpowerscripts:orchestrator:build -v devhub --branch main --diffcheck --buildnumber $(Build.BuildId)
+                  inputs: 
+                      script: 'sfdx sfpowerscripts:orchestrator:build -v devhub --branch main --diffcheck --buildnumber $(Build.BuildId)'
 
 # Publish packages to an artifact registry
                 - script: |
