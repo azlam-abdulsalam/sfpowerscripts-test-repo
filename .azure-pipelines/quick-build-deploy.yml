@@ -36,7 +36,7 @@ stages:
     - stage: QuickBuild
       displayName: QuickBuild
       dependsOn: []
-      condition: contains(variables['build.sourceBranch'], 'refs/heads/main')
+      condition: and(contains(variables['build.sourceBranch'], 'refs/heads/main'),succeeded())
       jobs:
           - job: QuickBuildJob
             displayName: 'Quick Build the packages'
@@ -74,7 +74,7 @@ stages:
     - stage: Deploy
       displayName: 'Deploy and Validate the packages'
       dependsOn: QuickBuild
-      condition: contains(variables['build.sourceBranch'], 'refs/heads/main')
+      condition: and(contains(variables['build.sourceBranch'], 'refs/heads/main'),succeeded())
       jobs:
           - deployment: deploy
             environment: 'deploy'
@@ -115,7 +115,7 @@ stages:
     - stage: Build
       displayName: 'Build Production Ready Packages and Publish'
       dependsOn: Deploy
-      condition: or(contains(variables['build.sourceBranch'], 'refs/heads/main'), contains(variables['build.sourceBranch'], 'refs/heads/release*'))
+      condition: and( or(contains(variables['build.sourceBranch'], 'refs/heads/main'), contains(variables['build.sourceBranch'], 'refs/heads/release*')),succeeded())
       jobs:
           - deployment : BuildJob
             environment: build
@@ -142,14 +142,15 @@ stages:
                   displayName: 'Authenticate DevHub'
 
 # Authenticate NPM
-                - task: DownloadSecureFile@1
-                  name: npmrc
-                  inputs:
-                      secureFile: .npmrc
+                - task: CmdLine@2
+                  displayName: 'Create .npmrc file'
+                  inputs: 
+                      script: 'echo "@[$(scope)]/registry=$(scope)/_packaging/$(scope)/npm/registry/" > ~/.npmrc'
+
 
                 - task: npmAuthenticate@0
                   inputs:
-                    workingFile: $(npmrc.secureFilePath)
+                    workingFile: ~/.npmrc
 
 #Build all packages (unlocked/source/data) in a repo in parallel, respecting the dependency of each packages and generate artifacts to a provided directory
                 - task: CmdLine@2
