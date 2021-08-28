@@ -24,7 +24,7 @@ jobs:
     name: 'Clean Dev Pool'
     runs-on: ubuntu-latest
     container: dxatscale/sfpowerscripts
-    env:
+    #env:
       #SET ONE OF THESE FOR METRICS
       #SFPOWERSCRIPTS_NEWRELIC: 'true'
       #SFPOWERSCRIPTS_NEWRELIC_API_KEY: '${{ secrets.NEWRELIC_INGEST_KEY }}'
@@ -49,7 +49,7 @@ jobs:
     name: 'Clean CI Pool'
     runs-on: ubuntu-latest
     container: dxatscale/sfpowerscripts
-     env:
+     #env:
       #SET ONE OF THESE FOR METRICS
       #SFPOWERSCRIPTS_NEWRELIC: 'true'
       #SFPOWERSCRIPTS_NEWRELIC_API_KEY: '${{ secrets.NEWRELIC_INGEST_KEY }}'
