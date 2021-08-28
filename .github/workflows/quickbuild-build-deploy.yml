@@ -61,7 +61,7 @@ jobs:
     runs-on: ubuntu-latest
     container: dxatscale/sfpowerscripts
     needs: quickbuild
-    ##env
+    env:
       #SET ONE OF THESE FOR METRICS
       #SFPOWERSCRIPTS_NEWRELIC: 'true'
       #SFPOWERSCRIPTS_NEWRELIC_API_KEY: '${{ secrets.NEWRELIC_INGEST_KEY }}'
