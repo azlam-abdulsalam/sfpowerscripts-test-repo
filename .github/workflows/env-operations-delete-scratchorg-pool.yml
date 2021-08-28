@@ -25,7 +25,7 @@ jobs:
     name: 'Return a used scratch org to the pool ${{ github.event.inputs.username }}'
     runs-on: ubuntu-latest
     container: dxatscale/sfpowerscripts
-    env:
+    #env:
       #SET ONE OF THESE FOR METRICS
       #SFPOWERSCRIPTS_NEWRELIC: 'true'
       #SFPOWERSCRIPTS_NEWRELIC_API_KEY: '${{ secrets.NEWRELIC_INGEST_KEY }}'

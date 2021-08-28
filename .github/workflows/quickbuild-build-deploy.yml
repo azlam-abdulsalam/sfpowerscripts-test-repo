@@ -28,7 +28,7 @@ jobs:
     name: 'Quickbuild packages'
     runs-on: ubuntu-latest
     container: dxatscale/sfpowerscripts
-    env:
+    #env:
       #SET ONE OF THESE FOR METRICS
       #SFPOWERSCRIPTS_NEWRELIC: 'true'
       #SFPOWERSCRIPTS_NEWRELIC_API_KEY: '${{ secrets.NEWRELIC_INGEST_KEY }}'
@@ -61,7 +61,7 @@ jobs:
     runs-on: ubuntu-latest
     container: dxatscale/sfpowerscripts
     needs: quickbuild
-    env:
+    #env:
       #SET ONE OF THESE FOR METRICS
       #SFPOWERSCRIPTS_NEWRELIC: 'true'
       #SFPOWERSCRIPTS_NEWRELIC_API_KEY: '${{ secrets.NEWRELIC_INGEST_KEY }}'
@@ -81,7 +81,7 @@ jobs:
              name: quickbuild-artifacts
              path: artifacts 
 
-       - name: 'Authenticate Dev Hub'
+      - name:  'Authenticate Dev Hub'
         run: |
           echo "${{ secrets.SFDX_AUTH_URL }}" > ./authfile
           sfdx auth:sfdxurl:store -f authfile -a devhub
@@ -93,8 +93,8 @@ jobs:
 
       - name: 'Deploy to DEV'
         run: |
-        sfdx sfpowerkit:package:dependencies:install -u dev -v devhub -w 120 -r
-        sfdx sfpowerscripts:orchestrator:deploy -u dev
+          sfdx sfpowerkit:package:dependencies:install -u dev -v devhub -w 120 -r
+          sfdx sfpowerscripts:orchestrator:deploy -u dev
 
   buildAndPublish:
     name: 'Build and Publish'
@@ -103,7 +103,7 @@ jobs:
     needs: deploy
     concurrency: build
     env:
-      NPM_SCOPE: '@scope'  #Replace scope with  GitHub org-name 
+      NPM_SCOPE: '@${{ github.repository_owner }}'	  
       #SET ONE OF THESE FOR METRICS
       #SFPOWERSCRIPTS_NEWRELIC: 'true'
       #SFPOWERSCRIPTS_NEWRELIC_API_KEY: '${{ secrets.NEWRELIC_INGEST_KEY }}'
@@ -133,7 +133,7 @@ jobs:
 
       - name: Authenticate to NPM registry
         run: |
-           echo "${{ env.NPM_SCOPE }}:registry=https://npm.pkg.github.com" > ~/.npmrc
+           echo "@@${{ github.repository_owner }}:registry=https://npm.pkg.github.com" > ~/.npmrc
            echo  "_authToken=${AUTH_TOKEN}" >> ~/.npmrc
         env:
           AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -141,7 +141,7 @@ jobs:
 
       - name: Publish
         run: |
-          sfdx sfpowerscripts:orchestrator:publish -d artifacts --npm --scope ${{ env.NPM_SCOPE }} --gittag --pushgittag
+          sfdx sfpowerscripts:orchestrator:publish -d artifacts --npm --scope @${{ github.repository_owner }} --gittag --pushgittag
 
 
 

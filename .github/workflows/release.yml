@@ -27,8 +27,7 @@ jobs:
     container: dxatscale/sfpowerscripts
     environment:
       name: ST
-    env:
-      NPM_SCOPE: 'scope' #Change scope 
+    #env:
       #SET ONE OF THESE FOR METRICS
       #SFPOWERSCRIPTS_NEWRELIC: 'true'
       #SFPOWERSCRIPTS_NEWRELIC_API_KEY: '${{ secrets.NEWRELIC_INGEST_KEY }}'
@@ -47,7 +46,7 @@ jobs:
 
       - name: Authenticate to NPM registry
         run: |
-           echo "${{ env.NPM_SCOPE }}:registry=https://npm.pkg.github.com" > ~/.npmrc
+           echo "@${{ github.repository_owner }}:registry=https://npm.pkg.github.com" > ~/.npmrc
            echo  "_authToken=${AUTH_TOKEN}" >> ~/.npmrc
         env:
           AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -57,15 +56,14 @@ jobs:
         run: 'sfdx sfpowerscripts:orchestrator:release -u st -p ${{ github.event.inputs.pathToReleaseDef }} --npm --scope ${{ env.NPM_SCOPE }} --generatechangelog -b ${GITHUB_REF#refs/heads/}'
 
 
-  Staging:
+  SIT:
     runs-on: ubuntu-latest
     container: dxatscale/sfpowerscripts
-      if: github.ref == 'refs/heads/main' || 'refs/heads/release/*'
+    if: github.ref == 'refs/heads/main' || 'refs/heads/release/*'
     environment:
-      name: STAGING
+      name: SIT
     needs: ST  
-    env:
-      NPM_SCOPE: 'scope' #Change scope 
+    #env:
       #SET ONE OF THESE FOR METRICS
       #SFPOWERSCRIPTS_NEWRELIC: 'true'
       #SFPOWERSCRIPTS_NEWRELIC_API_KEY: '${{ secrets.NEWRELIC_INGEST_KEY }}'
@@ -82,11 +80,11 @@ jobs:
       - name: Authenticate to STAGING sandbox
         run: |
           echo "${{ secrets.STAGING_SFDX_AUTH_URL }}" > ./authfile
-          sfdx auth:sfdxurl:store -f ./authfile -a staging
+          sfdx auth:sfdxurl:store -f ./authfile -a sit
 
       - name: Authenticate to NPM registry
         run: |
-           echo "${{ env.NPM_SCOPE }}:registry=https://npm.pkg.github.com" > ~/.npmrc
+           echo "{{ github.repository_owner }}:registry=https://npm.pkg.github.com" > ~/.npmrc
            echo  "_authToken=${AUTH_TOKEN}" >> ~/.npmrc
         env:
           AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -94,7 +92,7 @@ jobs:
 
       # Release to environment
       - name: 'Release to STAGING'
-         run: 'sfdx sfpowerscripts:orchestrator:release -u staging -p ${{ github.event.inputs.pathToReleaseDef }} --npm --scope ${{ env.NPM_SCOPE }} --generatechangelog -b ${GITHUB_REF#refs/heads/}'
+        run: 'sfdx sfpowerscripts:orchestrator:release -u staging -p ${{ github.event.inputs.pathToReleaseDef }} --npm --scope ${{ env.NPM_SCOPE }} --generatechangelog -b ${GITHUB_REF#refs/heads/}'
 
   PROD:
     runs-on: ubuntu-latest
@@ -103,8 +101,7 @@ jobs:
     environment:
       name: PROD
     needs: SIT  
-    env:
-       NPM_SCOPE: 'scope' #Change scope 
+    #env:
       #SET ONE OF THESE FOR METRICS
       #SFPOWERSCRIPTS_NEWRELIC: 'true'
       #SFPOWERSCRIPTS_NEWRELIC_API_KEY: '${{ secrets.NEWRELIC_INGEST_KEY }}'
@@ -125,7 +122,7 @@ jobs:
 
       - name: Authenticate to NPM registry
         run: |
-           echo "${{ env.NPM_SCOPE }}:registry=https://npm.pkg.github.com" > ~/.npmrc
+           echo "@${{ github.repository_owner }}:registry=https://npm.pkg.github.com" > ~/.npmrc
            echo  "_authToken=${AUTH_TOKEN}" >> ~/.npmrc
         env:
           AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -133,5 +130,5 @@ jobs:
 
       # Release to environment
       - name: 'Release to PROD'
-    run: 'sfdx sfpowerscripts:orchestrator:release -u prod -p ${{ github.event.inputs.pathToReleaseDef }} --npm --scope ${{ env.NPM_SCOPE }} --generatechangelog -b ${GITHUB_REF#refs/heads/}'
+        run: 'sfdx sfpowerscripts:orchestrator:release -u prod -p ${{ github.event.inputs.pathToReleaseDef }} --npm --scope ${{ env.NPM_SCOPE }} --generatechangelog -b ${GITHUB_REF#refs/heads/}'
 
