@@ -28,7 +28,6 @@ jobs:
     environment:
       name: ST
     env:
-      NPM_SCOPE: 'scope' #Change scope 
       #SET ONE OF THESE FOR METRICS
       #SFPOWERSCRIPTS_NEWRELIC: 'true'
       #SFPOWERSCRIPTS_NEWRELIC_API_KEY: '${{ secrets.NEWRELIC_INGEST_KEY }}'
@@ -47,7 +46,7 @@ jobs:
 
       - name: Authenticate to NPM registry
         run: |
-           echo "${{ env.NPM_SCOPE }}:registry=https://npm.pkg.github.com" > ~/.npmrc
+           echo "@${{ github.repository_owner }}:registry=https://npm.pkg.github.com" > ~/.npmrc
            echo  "_authToken=${AUTH_TOKEN}" >> ~/.npmrc
         env:
           AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -86,7 +85,7 @@ jobs:
 
       - name: Authenticate to NPM registry
         run: |
-           echo "${{ env.NPM_SCOPE }}:registry=https://npm.pkg.github.com" > ~/.npmrc
+           echo "{{ github.repository_owner }}:registry=https://npm.pkg.github.com" > ~/.npmrc
            echo  "_authToken=${AUTH_TOKEN}" >> ~/.npmrc
         env:
           AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -125,7 +124,7 @@ jobs:
 
       - name: Authenticate to NPM registry
         run: |
-           echo "${{ env.NPM_SCOPE }}:registry=https://npm.pkg.github.com" > ~/.npmrc
+           echo "@${{ github.repository_owner }}:registry=https://npm.pkg.github.com" > ~/.npmrc
            echo  "_authToken=${AUTH_TOKEN}" >> ~/.npmrc
         env:
           AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
