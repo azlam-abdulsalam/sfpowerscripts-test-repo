@@ -27,7 +27,7 @@ jobs:
     container: dxatscale/sfpowerscripts
     environment:
       name: ST
-    env:
+    #env:
       #SET ONE OF THESE FOR METRICS
       #SFPOWERSCRIPTS_NEWRELIC: 'true'
       #SFPOWERSCRIPTS_NEWRELIC_API_KEY: '${{ secrets.NEWRELIC_INGEST_KEY }}'
@@ -48,7 +48,7 @@ jobs:
         run: |
            echo "@${{ github.repository_owner }}:registry=https://npm.pkg.github.com" > ~/.npmrc
            echo  "_authToken=${AUTH_TOKEN}" >> ~/.npmrc
-        env:
+        #env
           AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       # Release to environment
@@ -63,8 +63,7 @@ jobs:
     environment:
       name: STAGING
     needs: ST  
-    env:
-      NPM_SCOPE: 'scope' #Change scope 
+    #env:
       #SET ONE OF THESE FOR METRICS
       #SFPOWERSCRIPTS_NEWRELIC: 'true'
       #SFPOWERSCRIPTS_NEWRELIC_API_KEY: '${{ secrets.NEWRELIC_INGEST_KEY }}'
@@ -102,8 +101,7 @@ jobs:
     environment:
       name: PROD
     needs: SIT  
-    env:
-       NPM_SCOPE: 'scope' #Change scope 
+    #env:
       #SET ONE OF THESE FOR METRICS
       #SFPOWERSCRIPTS_NEWRELIC: 'true'
       #SFPOWERSCRIPTS_NEWRELIC_API_KEY: '${{ secrets.NEWRELIC_INGEST_KEY }}'

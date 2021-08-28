@@ -28,7 +28,7 @@ jobs:
     name: 'Validate Changed Packages'
     runs-on: ubuntu-latest
     container: dxatscale/sfpowerscripts
-    env:
+    #env:
       #SET ONE OF THESE FOR METRICS
       #SFPOWERSCRIPTS_NEWRELIC: 'true'
       #SFPOWERSCRIPTS_NEWRELIC_API_KEY: '${{ secrets.NEWRELIC_INGEST_KEY }}'
