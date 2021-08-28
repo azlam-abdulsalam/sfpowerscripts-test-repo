@@ -130,5 +130,5 @@ jobs:
 
       # Release to environment
       - name: 'Release to PROD'
-        run: 'sfdx sfpowerscripts:orchestrator:release -u prod -p ${{ github.event.inputs.pathToReleaseDef }} --npm --scope ${{ env.NPM_SCOPE }} --generatechangelog -b ${GITHUB_REF#refs/heads/}'
+        run: 'sfdx sfpowerscripts:orchestrator:release -u prod -p ${{ github.event.inputs.pathToReleaseDef }} --npm --scope ${{ env.NPM_SCOPE }} --generatechangelog --branchname ${GITHUB_REF#refs/heads/}'
 
