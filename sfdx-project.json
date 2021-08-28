@@ -27,13 +27,15 @@
             "path": "src/frameworks/trigger-framework",
             "package": "trigger-framework",
             "versionNumber": "1.0.0.0",
-            "versionName": "trigger-framework-1.0"
+            "versionName": "trigger-framework-1.0",
+            "isOptimizedDeployment":false
         },
         {
             "path": "src/frameworks/trigger-bypass-strategy",
             "package": "trigger-bypass-strategy",
             "versionNumber": "1.0.0.0",
             "versionName": "trigger-bypass-strategy-1.0",
+            "isOptimizedDeployment":false,
             "dependencies": [
                 {
                     "package": "trigger-framework",
