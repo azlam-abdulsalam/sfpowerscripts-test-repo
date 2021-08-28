@@ -108,11 +108,5 @@
     "packageAliases": {
     },
     "plugins": {
-        "sfpowerscripts": {
-            "ignoreFiles": {
-                "quickbuild": "forceignores/.buildignore",
-                "build": "forceignores/.buildignore"
-            }
-        }
     }
 }
