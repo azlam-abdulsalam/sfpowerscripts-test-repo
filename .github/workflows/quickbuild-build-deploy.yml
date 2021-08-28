@@ -83,7 +83,7 @@ jobs:
 
       - name:  'Authenticate Dev Hub'
         run: |
-          echo "${{ secrets.SFDX_AUTH_URL }}" > ./authfile
+          echo "${{ secrets.DEVHUB_SFDX_AUTH_URL }}" > ./authfile
           sfdx auth:sfdxurl:store -f authfile -a devhub
 
       - name: Authenticate to DEV sandbox
