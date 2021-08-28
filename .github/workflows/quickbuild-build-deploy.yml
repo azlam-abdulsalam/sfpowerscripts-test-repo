@@ -28,7 +28,7 @@ jobs:
     name: 'Quickbuild packages'
     runs-on: ubuntu-latest
     container: dxatscale/sfpowerscripts
-    env:
+    #env:
       #SET ONE OF THESE FOR METRICS
       #SFPOWERSCRIPTS_NEWRELIC: 'true'
       #SFPOWERSCRIPTS_NEWRELIC_API_KEY: '${{ secrets.NEWRELIC_INGEST_KEY }}'
@@ -61,7 +61,7 @@ jobs:
     runs-on: ubuntu-latest
     container: dxatscale/sfpowerscripts
     needs: quickbuild
-    env:
+    #env:
       #SET ONE OF THESE FOR METRICS
       #SFPOWERSCRIPTS_NEWRELIC: 'true'
       #SFPOWERSCRIPTS_NEWRELIC_API_KEY: '${{ secrets.NEWRELIC_INGEST_KEY }}'
@@ -81,7 +81,7 @@ jobs:
              name: quickbuild-artifacts
              path: artifacts 
 
-       - name: 'Authenticate Dev Hub'
+      - name:  'Authenticate Dev Hub'
         run: |
           echo "${{ secrets.SFDX_AUTH_URL }}" > ./authfile
           sfdx auth:sfdxurl:store -f authfile -a devhub
@@ -93,8 +93,8 @@ jobs:
 
       - name: 'Deploy to DEV'
         run: |
-        sfdx sfpowerkit:package:dependencies:install -u dev -v devhub -w 120 -r
-        sfdx sfpowerscripts:orchestrator:deploy -u dev
+          sfdx sfpowerkit:package:dependencies:install -u dev -v devhub -w 120 -r
+          sfdx sfpowerscripts:orchestrator:deploy -u dev
 
   buildAndPublish:
     name: 'Build and Publish'
