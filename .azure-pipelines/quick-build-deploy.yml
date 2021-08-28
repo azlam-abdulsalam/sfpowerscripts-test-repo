@@ -32,10 +32,11 @@ variables:
 
 #Stages to run as part merged changes  
 stages:
+    #quickBuild packages (unlocked/source/data) in a repo in parallel
     - stage: QuickBuild
-#quickBuild packages (unlocked/source/data) in a repo in parallel
       displayName: QuickBuild
       dependsOn: []
+      condition: contains(variables['build.sourceBranch'], 'refs/heads/main')
       jobs:
           - job: QuickBuildJob
             displayName: 'Quick Build the packages'
@@ -73,6 +74,7 @@ stages:
     - stage: Deploy
       displayName: 'Deploy and Validate the packages'
       dependsOn: QuickBuild
+      condition: contains(variables['build.sourceBranch'], 'refs/heads/main')
       jobs:
           - deployment: deploy
             environment: 'deploy'
@@ -84,7 +86,6 @@ stages:
 
 #The docker container contains sfpowerscripts and the dependencies it needs to run, # refer to https://hub.docker.com/r/dxatscale/sfpowerscripts                
             container: dxatscale/sfpowerscripts:latest
-
             strategy:
              runOnce:
               deploy:
@@ -114,6 +115,7 @@ stages:
     - stage: Build
       displayName: 'Build Production Ready Packages and Publish'
       dependsOn: Deploy
+      condition: or(contains(variables['build.sourceBranch'], 'refs/heads/main'), contains(variables['build.sourceBranch'], 'refs/heads/release*'))
       jobs:
           - deployment : BuildJob
             environment: build
@@ -152,10 +154,10 @@ stages:
 #Build all packages (unlocked/source/data) in a repo in parallel, respecting the dependency of each packages and generate artifacts to a provided directory
                 - task: CmdLine@2
                   displayName: 'Build All Packages'
-                  inputs:
-                      script: 'sfdx sfpowerscripts:orchestrator:build -v devhub --branch main --diffcheck'
+                  inputs: |
+                      script: 'sfdx sfpowerscripts:orchestrator:build -v devhub --branch main --diffcheck --buildnumber $(Build.BuildId)
 
-#Publish packages to an artifact registry
+# Publish packages to an artifact registry
                 - script: |
                    sfdx sfpowerscripts:orchestrator:publish --npm --npmtag main --scope ${ scope } --npmrcpath $(npmrc.secureFilePath)  --gittag --pushgittag
                   displayName: 'Publish artifacts to NPM registry'

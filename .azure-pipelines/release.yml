@@ -68,7 +68,7 @@ stages:
                  - task: CmdLine@2
                    displayName: 'Deploy packages to st'
                    inputs:
-                      script: 'sfdx sfpowerscripts:orchestrator:release -u st -p ${{ parameters.releasedefintionPath }} --npm --scope  ${ scope } --npmrcpath $(npmrc.secureFilePath) --generatechangelog'
+                      script: 'sfdx sfpowerscripts:orchestrator:release -u st -p ${{ parameters.releasedefintionPath }} --npm --scope  ${ scope } --npmrcpath $(npmrc.secureFilePath) --generatechangelog --branchame $(Build.SourceBranchName)'
 
 # Release Package to SIT    
           - deployment: release_sit
@@ -108,7 +108,7 @@ stages:
                  - task: CmdLine@2
                    displayName: 'Deploy packages to SIT'
                    inputs:
-                      script: 'sfdx sfpowerscripts:orchestrator:release -u sit -p ${{ parameters.releasedefintionPath }} --npm --scope  ${ scope } --npmrcpath $(npmrc.secureFilePath) --generatechangelog'
+                      script: 'sfdx sfpowerscripts:orchestrator:release -u sit -p ${{ parameters.releasedefintionPath }} --npm --scope  ${ scope } --npmrcpath $(npmrc.secureFilePath) --generatechangelog  --branchame $(Build.SourceBranchName)'
 
 # Release Package to PROD    
           - deployment: release_prod
@@ -149,4 +149,4 @@ stages:
                 - task: CmdLine@2
                   displayName: 'Deploy packages to Prod'
                   inputs:
-                      script: 'sfdx sfpowerscripts:orchestrator:release -u prod -p ${{ parameters.releasedefintionPath }} --npm --scope ${ scope } --npmrcpath $(npmrc.secureFilePath) --generatechangelog'
+                      script: 'sfdx sfpowerscripts:orchestrator:release -u prod -p ${{ parameters.releasedefintionPath }} --npm --scope ${ scope } --npmrcpath $(npmrc.secureFilePath) --generatechangelog  --branchame $(Build.SourceBranchName)'

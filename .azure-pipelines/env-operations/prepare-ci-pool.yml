@@ -20,7 +20,7 @@ schedules:
       displayName: Daily midnight prepare pool
       branches:
           include:
-              - azp-templates
+              - main
       always: true
 
 # Runs build on the mentioned Image    
