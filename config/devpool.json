@@ -12,7 +12,7 @@
     "installAll": true,
     "fetchArtifacts": {
         "npm": {
-          "scope": "@org-name",
+          "scope": "azlam-abdulsalam",
           "npmtag": "main"
         }
       }
