@@ -21,6 +21,11 @@ on:
 
 
   workflow_dispatch:
+      inputs:
+        isBuildAllPackages:
+          description: "Build all packages?"
+          required: false
+          default: 'false'
 
 
 
@@ -52,7 +57,12 @@ jobs:
       - name: 'Create packages'
         id: sfpowerscripts-build
         run: |
-          sfdx sfpowerscripts:orchestrator:quickbuild -v devhub --diffcheck --buildnumber ${GITHUB_RUN_ID} --branch ${GITHUB_REF#refs/heads/}
+          if [ {{ github.input.isBuildAllPackages }} == true ];
+            sfdx sfpowerscripts:orchestrator:quickbuild -v devhub --branch ${GITHUB_REF#refs/heads/} --buildnumber ${GITHUB_RUN_ID}
+          else
+            sfdx sfpowerscripts:orchestrator:quickbuild -v devhub --diffcheck --branch ${GITHUB_REF#refs/heads/} --buildnumber ${GITHUB_RUN_ID
+          fi
+         
 
       # Publish artifacts
       - uses: actions/upload-artifact@v2
@@ -112,7 +122,11 @@ jobs:
       - name: 'Create packages'
         id: sfpowerscripts-build
         run: |
-          sfdx sfpowerscripts:orchestrator:build -v devhub --diffcheck --branch ${GITHUB_REF#refs/heads/} --buildnumber ${GITHUB_RUN_ID}
+          if [ {{ github.input.isBuildAllPackages }} == true ];
+            sfdx sfpowerscripts:orchestrator:build -v devhub --branch ${GITHUB_REF#refs/heads/} --buildnumber ${GITHUB_RUN_ID}
+          else
+            sfdx sfpowerscripts:orchestrator:build -v devhub --diffcheck --branch ${GITHUB_REF#refs/heads/} --buildnumber ${GITHUB_RUN_ID
+          fi
 
       # Publish artifacts
       - uses: actions/upload-artifact@v2
