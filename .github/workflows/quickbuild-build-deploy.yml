@@ -57,8 +57,8 @@ jobs:
       - name: 'Create packages'
         id: sfpowerscripts-build
         run: |
-          echo "${github.events.input.isbuildall}"
-          if [ "${github.events.input.isbuildall}" == "true" ]; then
+          echo "${{ github.events.input.isbuildall }}"
+          if [ "${{ github.events.input.isbuildall }}" == "true" ]; then
             sfdx sfpowerscripts:orchestrator:quickbuild -v devhub --branch ${GITHUB_REF#refs/heads/} --buildnumber ${GITHUB_RUN_ID}
           else
             sfdx sfpowerscripts:orchestrator:quickbuild -v devhub --diffcheck --branch ${GITHUB_REF#refs/heads/} --buildnumber ${GITHUB_RUN_ID}
