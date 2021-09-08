@@ -54,11 +54,11 @@ jobs:
           echo "${{ secrets.DEVHUB_SFDX_AUTH_URL }}" > ./authfile
           sfdx auth:sfdxurl:store -f authfile -a devhub
 
-      - name: 'Create packages'
+      - name: 'Create packages buildAll ${{ github.event.inputs.isbuildall }}'
         id: sfpowerscripts-build
         run: |
-          echo "${{ github.events.input.isbuildall }}"
-          if [ "${{ github.events.input.isbuildall }}" == "true" ]; then
+          echo "${{ github.events.inputs.isbuildall }}"
+          if [ "${{ github.events.inputs.isbuildall }}" == "true" ]; then
             sfdx sfpowerscripts:orchestrator:quickbuild -v devhub --branch ${GITHUB_REF#refs/heads/} --buildnumber ${GITHUB_RUN_ID}
           else
             sfdx sfpowerscripts:orchestrator:quickbuild -v devhub --diffcheck --branch ${GITHUB_REF#refs/heads/} --buildnumber ${GITHUB_RUN_ID}
@@ -123,7 +123,7 @@ jobs:
       - name: 'Create packages'
         id: sfpowerscripts-build
         run: |
-          if [ {{ github.events.input.isbuildall }} == true ]; then
+          if [ {{ github.events.inputs.isbuildall }} == true ]; then
             sfdx sfpowerscripts:orchestrator:build -v devhub --branch ${GITHUB_REF#refs/heads/} --buildnumber ${GITHUB_RUN_ID}
           else
             sfdx sfpowerscripts:orchestrator:build -v devhub --diffcheck --branch ${GITHUB_REF#refs/heads/} --buildnumber ${GITHUB_RUN_ID}
