@@ -60,7 +60,7 @@ jobs:
           if [ {{ github.input.isBuildAllPackages }} == true ]; then
             sfdx sfpowerscripts:orchestrator:quickbuild -v devhub --branch ${GITHUB_REF#refs/heads/} --buildnumber ${GITHUB_RUN_ID}
           else
-            sfdx sfpowerscripts:orchestrator:quickbuild -v devhub --diffcheck --branch ${GITHUB_REF#refs/heads/} --buildnumber ${GITHUB_RUN_ID
+            sfdx sfpowerscripts:orchestrator:quickbuild -v devhub --diffcheck --branch ${GITHUB_REF#refs/heads/} --buildnumber ${GITHUB_RUN_ID}
           fi
          
 
@@ -125,7 +125,7 @@ jobs:
           if [ {{ github.input.isBuildAllPackages }} == true ]; then
             sfdx sfpowerscripts:orchestrator:build -v devhub --branch ${GITHUB_REF#refs/heads/} --buildnumber ${GITHUB_RUN_ID}
           else
-            sfdx sfpowerscripts:orchestrator:build -v devhub --diffcheck --branch ${GITHUB_REF#refs/heads/} --buildnumber ${GITHUB_RUN_ID
+            sfdx sfpowerscripts:orchestrator:build -v devhub --diffcheck --branch ${GITHUB_REF#refs/heads/} --buildnumber ${GITHUB_RUN_ID}
           fi
 
       # Publish artifacts
