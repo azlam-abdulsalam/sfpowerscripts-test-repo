@@ -58,7 +58,7 @@ jobs:
         id: sfpowerscripts-build
         run: |
           echo "${{ github.event.inputs.isbuildall }}"
-          if [ "${{ github.event.inputs.isbuildall }}" == "true" ]; then
+          if [ "${{ github.event.inputs.isbuildall }}" eq "true" ]; then
             sfdx sfpowerscripts:orchestrator:quickbuild -v devhub --branch ${GITHUB_REF#refs/heads/} --buildnumber ${GITHUB_RUN_ID}
           else
             sfdx sfpowerscripts:orchestrator:quickbuild -v devhub --diffcheck --branch ${GITHUB_REF#refs/heads/} --buildnumber ${GITHUB_RUN_ID}
