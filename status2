@@ -1,0 +1,5 @@
+=== Source Status
+STATE      FULL NAME                        TYPE          PROJECT PATH
+─────────  ───────────────────────────────  ────────────  ─────────────────────────────────────────────────────────────────────────────
+Local Add  newobject3__c-newobject3 Layout  Layout        src-ui/main/default/layouts/newobject3__c-newobject3 Layout.layout-meta.xml
+Local Add  newobject3__c                    CustomObject  src/core-crm/main/default/objects/newobject3__c/newobject3__c.object-meta.xml
