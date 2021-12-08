@@ -48,8 +48,6 @@ jobs:
    
       - name: 'Authenticate Dev Hub'
         run: |
-          npm install sfdx-cli@7.125.0 --global
-          echo 'y' | sfdx plugins:install @dxatscale/sfpowerscripts
           echo "${{ secrets.DEVHUB_SFDX_AUTH_URL }}" > ./authfile
           sfdx auth:sfdxurl:store -f authfile -a devhub
 
