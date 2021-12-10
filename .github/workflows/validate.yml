@@ -45,6 +45,7 @@ jobs:
           fetch-depth: 0
 
       - run: |
+          echo $GITHUB_BASE_REF
           git fetch origin
           git branch -a
           git diff main HEAD
