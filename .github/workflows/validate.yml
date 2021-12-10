@@ -45,6 +45,7 @@ jobs:
           fetch-depth: 0
 
       - run: |
+          git branch -a
           git diff main HEAD
 
       - run: |
