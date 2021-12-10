@@ -2,7 +2,7 @@
 #----------------------------------------------------------------------------------------------------
 # Maintained by @aly76 for DX@Scale
 # Follows reference pipeline available at docs.dxatscale.io
-# 
+#
 #-----------------------------------------------------------------------------------------------------
 # To know more about dxatscale, visit https://docs.dxatscale.io
 # To know more on sfpowerscripts, visit- https://sfpowerscripts.dxatscale.io/
@@ -43,6 +43,9 @@ jobs:
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0
+
+      - run: |
+          git diff main HEAD
 
       - run: |
           echo 'y' | sfdx plugins:install @dxatscale/sfpowerscripts@alpha
