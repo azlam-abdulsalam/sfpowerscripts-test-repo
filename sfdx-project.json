@@ -27,7 +27,8 @@
             "path": "./src/core-crm",
             "package": "core",
             "versionName": "Version 1.0.1",
-            "versionNumber": "1.0.1.0"
+            "versionNumber": "1.0.1.0",
+            "alwaysDeploy": true
         },
         {
             "path": "./src-ui",
