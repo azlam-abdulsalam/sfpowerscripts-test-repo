@@ -1,4 +1,4 @@
-[![st-Release-1.0-2(0)-green](https://img.shields.io/static/v1?label=st&message=Release-1.0-2(0)&color=green)](#899c59f75b4a97bfaa036a401e1d3cf50b0e5117) [![sit-Release-1.0-1(2)-green](https://img.shields.io/static/v1?label=sit&message=Release-1.0-1(2)&color=green)](#9bb287b3a567ea276cd3a7a63bcd05224177aa26) 
+[![st-Release-1.0-2(0)-green](https://img.shields.io/static/v1?label=st&message=Release-1.0-2(0)&color=green)](#899c59f75b4a97bfaa036a401e1d3cf50b0e5117) [![sit-Release-1.0-2(0)-green](https://img.shields.io/static/v1?label=sit&message=Release-1.0-2(0)&color=green)](#899c59f75b4a97bfaa036a401e1d3cf50b0e5117) 
 <a id=899c59f75b4a97bfaa036a401e1d3cf50b0e5117></a>
 # Release-1.0-2
 ### Artifacts :package:
