@@ -25,7 +25,7 @@ on:
         isbuildall:
           description: "Build all packages?"
           required: false
-          default: 'false'
+          default: 'no'
 
 
 
@@ -51,6 +51,7 @@ jobs:
 
       - name: 'Authenticate Dev Hub'
         run: |
+     
           echo "${{ secrets.DEVHUB_SFDX_AUTH_URL }}" > ./authfile
           sfdx auth:sfdxurl:store -f authfile -a devhub
 
@@ -58,7 +59,7 @@ jobs:
         id: sfpowerscripts-build
         run: |
           echo "${{ github.event.inputs.isbuildall }}"
-          if [ "${{ github.event.inputs.isbuildall }}" -eq "true" ]; then
+          if [ "${{ github.event.inputs.isbuildall }}" = "yes" ]; then
             sfdx sfpowerscripts:orchestrator:quickbuild -v devhub --branch ${GITHUB_REF#refs/heads/} --buildnumber ${GITHUB_RUN_ID}
           else
             sfdx sfpowerscripts:orchestrator:quickbuild -v devhub --diffcheck --branch ${GITHUB_REF#refs/heads/} --buildnumber ${GITHUB_RUN_ID}
