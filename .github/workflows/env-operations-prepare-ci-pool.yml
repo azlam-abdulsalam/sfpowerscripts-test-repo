@@ -64,3 +64,11 @@ jobs:
 
       - name: 'Prepare a pool of scratch orgs'
         run: 'sfdx sfpowerscripts:orchestrator:prepare -f config/cipool.json -v devhub'
+        
+
+      # Publish artifacts
+      - uses: actions/upload-artifact@v2
+        with:
+          name: pool-logs
+          path: .sfpowerscripts/prepare_logs
+
