@@ -34,4 +34,6 @@ jobs:
         run: |
           echo  ${{ github.ref }}
           echo  ${{ github.event.commits[0].message }}
+          echo  ${{ github.event.commits[0].message }}
+          echo  ${{  startsWith(github.event.commits[0].message, 'chore(publish)') }}
           
