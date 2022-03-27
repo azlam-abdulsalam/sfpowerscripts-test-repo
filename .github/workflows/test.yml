@@ -33,12 +33,12 @@ jobs:
       - name: Run a multi-line script
         run: |
           echo  ${{ github.ref }}
-          echo ${{ (github.ref == 'refs/head/main') && startsWith(github.event.commits[0].message, 'chore(publish)') }}
+          echo ${{ (github.ref == 'refs/heads/main') && startsWith(github.event.commits[0].message, 'chore(publish)') }}
     
   
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
-        if: ${{ (github.ref == 'refs/head/main') && startsWith(github.event.commits[0].message, 'chore(publish)') }}
+        if: ${{ (github.ref == 'refs/heads/main') && startsWith(github.event.commits[0].message, 'chore(publish)') }}
         run: |
           echo  ${{ github.ref }}
           echo  '${{ github.event.commits[0].message }}'
