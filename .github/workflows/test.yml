@@ -28,12 +28,20 @@ jobs:
       # Runs a single command using the runners shell
       - name: Run a one-line script
         run: echo Hello, world!
-
+        
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
         run: |
           echo  ${{ github.ref }}
           echo  ${{ github.event.commits[0].message }}
           echo  ${{ github.event.commits[0].message }}
-          echo  ${{  startsWith(github.event.commits[0].message, 'chore(publish)') }}
+
+      # Runs a set of commands using the runners shell
+      - name: Run a multi-line script
+        if: ${{ (github.ref == 'refs/heads/main' && startsWith(github.event.commits[0].message, 'chore(publish)')) }}
+        run: |
+          echo  ${{ github.ref }}
+          echo  ${{ github.event.commits[0].message }}
+          echo  ${{ github.event.commits[0].message }}
+
           
