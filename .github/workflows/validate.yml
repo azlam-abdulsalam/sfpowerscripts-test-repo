@@ -37,16 +37,13 @@ jobs:
   validate:
     name: 'Validate Changed Packages'
     runs-on: ubuntu-latest
-    container: dxatscale/sfpowerscripts
+    container: ghcr.io/dxatscale/sfpowerscripts:alpha
 
     steps:
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0
 
-      - run: |
-          yarn global add sfdx-cli@7.137.1
-          echo 'y' | sfdx plugins:install @dxatscale/sfpowerscripts@alpha
 
       - name: 'Authenticate Dev Hub'
         run: |
