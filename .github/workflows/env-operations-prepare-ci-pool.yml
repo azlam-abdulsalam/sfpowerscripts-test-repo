@@ -40,9 +40,6 @@ jobs:
     timeout-minutes: 720 #Set to Maximum Time out
 
     steps:
-    
-      - run: |
-          echo 'y' | sfdx plugins:install @dxatscale/sfpowerscripts@alpha 
 
       - uses: actions/checkout@v2
         with:
