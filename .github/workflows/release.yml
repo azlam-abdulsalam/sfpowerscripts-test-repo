@@ -45,17 +45,15 @@ jobs:
           echo "${{ secrets.ST_SFDX_AUTH_URL }}" > ./authfile
           sfdx auth:sfdxurl:store -f ./authfile -a st
 
-      - name: Authenticate to NPM registry
-        run: |
-           echo "@${{ github.repository_owner }}:registry=https://npm.pkg.github.com" > ~/.npmrc
-           echo  "_authToken=${AUTH_TOKEN}" >> ~/.npmrc
-        env:
-          AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - uses: actions/setup-node@v3
+        with:
+         registry-url: 'https://npm.pkg.github.com'
 
       # Release to environment
       - name: 'Release to ST'
         run: 'sfdx sfpowerscripts:orchestrator:release -u st -p ${{ github.event.inputs.pathToReleaseDef }} --npm --scope ${{ github.repository_owner }} --generatechangelog --branchname ${GITHUB_REF#refs/heads/} -g "::group::,::endgroup::" '
-
+        env:
+         NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   SIT:
     runs-on: ubuntu-latest
@@ -76,17 +74,15 @@ jobs:
           echo "${{ secrets.SIT_SFDX_AUTH_URL }}" > ./authfile
           sfdx auth:sfdxurl:store -f ./authfile -a sit
 
-      - name: Authenticate to NPM registry
-        run: |
-           echo "@${{ github.repository_owner }}:registry=https://npm.pkg.github.com" > ~/.npmrc
-           echo  "_authToken=${AUTH_TOKEN}" >> ~/.npmrc
-        env:
-          AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
+      - uses: actions/setup-node@v3
+        with:
+         registry-url: 'https://npm.pkg.github.com'
 
       # Release to environment
       - name: 'Release to SIT'
         run: 'sfdx sfpowerscripts:orchestrator:release -u sit -p ${{ github.event.inputs.pathToReleaseDef }} --npm --scope ${{ github.repository_owner }} --generatechangelog --branchname ${GITHUB_REF#refs/heads/} -g "::group::,::endgroup::" '
+        env:
+         NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   PROD:
     runs-on: ubuntu-latest
