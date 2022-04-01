@@ -9,8 +9,7 @@
    "installAll": true,
     "fetchArtifacts": {
       "npm": {
-        "scope": "azlam-abdulsalam",
-        "npmtag": "main"
+        "scope": "azlam-abdulsalam"
       }
     }
  
