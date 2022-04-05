@@ -33,11 +33,13 @@ jobs:
   pool:
     name: 'Replenish Dev Pool'
     runs-on: ubuntu-latest
-    container: ghcr.io/dxatscale/sfpowerscripts:develop
+    container: ghcr.io/dxatscale/sfpowerscripts:13.0.0-2093743341
     timeout-minutes: 720 #Set to Maximum Time out
     steps:
 
       - uses: actions/checkout@v2
+        with:
+         fetch-depth: 0
 
       - name: 'Authenticate Dev Hub'
         run: |

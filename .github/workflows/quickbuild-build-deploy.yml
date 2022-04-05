@@ -43,7 +43,7 @@ jobs:
   quickbuild:
     name: 'Quickbuild packages'
     runs-on: ubuntu-latest
-    container: ghcr.io/dxatscale/sfpowerscripts:develop
+    container: ghcr.io/dxatscale/sfpowerscripts:13.0.0-2093743341
     steps:
       - uses: actions/checkout@v2
         with:
@@ -75,7 +75,7 @@ jobs:
   deploy:
     name: 'Deploy to Dev'
     runs-on: ubuntu-latest
-    container: ghcr.io/dxatscale/sfpowerscripts:develop
+    container: ghcr.io/dxatscale/sfpowerscripts:13.0.0-2093743341
     needs: quickbuild
     environment:
       name: DEV
@@ -108,7 +108,7 @@ jobs:
   buildAndPublish:
     name: 'Build and Publish'
     runs-on: ubuntu-latest
-    container: ghcr.io/dxatscale/sfpowerscripts:develop
+    container: ghcr.io/dxatscale/sfpowerscripts:13.0.0-2093743341
     needs: deploy
     concurrency: build 
     steps:
@@ -136,16 +136,15 @@ jobs:
           name: build-artifacts
           path: artifacts
 
-      - name: Authenticate to NPM registry
-        run: |
-           echo "@${{ github.repository_owner }}:registry=https://npm.pkg.github.com" > ~/.npmrc
-           echo  "_authToken=${AUTH_TOKEN}" >> ~/.npmrc
-        env:
-          AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          
+      - uses: actions/setup-node@v3
+        with:
+         registry-url: 'https://npm.pkg.github.com'
+
 
       - name: Publish
         run: |
           sfdx sfpowerscripts:orchestrator:publish -d artifacts --npm --scope @${{ github.repository_owner }}  --gittag --pushgittag
+        env:
+         NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 
