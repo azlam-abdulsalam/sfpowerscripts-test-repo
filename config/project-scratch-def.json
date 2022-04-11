@@ -2,7 +2,7 @@
     "orgName": "DX@Scale Demo Org",
     "edition": "Developer",
     "hasSampleData": false,
-    "features": ["Communities", "Walkthroughs", "EnableSetPasswordInApi"],
+    "features": ["DeferSharingCalc","Communities", "Walkthroughs", "EnableSetPasswordInApi"],
     "settings": {
         "communitiesSettings": {
             "enableNetworksEnabled": true
