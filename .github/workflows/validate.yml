@@ -37,7 +37,7 @@ jobs:
   validate:
     name: 'Validate Changed Packages'
     runs-on: ubuntu-latest
-    container: ghcr.io/dxatscale/sfpowerscripts:develop
+    container: ghcr.io/azlam-abdulsalam/sfpowerscripts:12.4.4-2151651378
 
     steps:
       - uses: actions/checkout@v2
