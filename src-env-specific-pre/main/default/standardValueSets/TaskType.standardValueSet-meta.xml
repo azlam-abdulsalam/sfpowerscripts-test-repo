@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StandardValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sorted>false</sorted>
+    <standardValue>
+        <fullName>Inbound call</fullName>
+        <default>false</default>
+        <label>Inbound call</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Outbound call</fullName>
+        <default>false</default>
+        <label>Outbound call</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Transfer call</fullName>
+        <default>false</default>
+        <label>Transfer call</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Follow up</fullName>
+        <default>false</default>
+        <label>Follow up</label>
+    </standardValue>
+</StandardValueSet>

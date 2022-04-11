@@ -40,7 +40,7 @@ stages:
                 vmImage: 'ubuntu-latest'
 
 #The docker container contains sfpowerscripts and the dependencies it needs to run, # refer to https://hub.docker.com/r/dxatscale/sfpowerscripts                  
-                container: ghcr.io/dxatscale/sfpowerscripts:alpha:latest
+            container: ghcr.io/dxatscale/sfpowerscripts:develop
             strategy:
              runOnce:
                deploy:
@@ -80,7 +80,7 @@ stages:
                 vmImage: 'ubuntu-latest'
 
 #The docker container contains sfpowerscripts and the dependencies it needs to run, # refer to https://hub.docker.com/r/dxatscale/sfpowerscripts                  
-                container: ghcr.io/dxatscale/sfpowerscripts:alpha:latest
+            container: ghcr.io/dxatscale/sfpowerscripts:develop
             strategy:
              runOnce:
                deploy:
@@ -121,7 +121,7 @@ stages:
                   vmImage: 'ubuntu-latest'
 
 #The docker container contains sfpowerscripts and the dependencies it needs to run, # refer to https://hub.docker.com/r/dxatscale/sfpowerscripts                  
-                container: ghcr.io/dxatscale/sfpowerscripts:alpha:latest
+            container: ghcr.io/dxatscale/sfpowerscripts:develop
             strategy:
             runOnce:
               deploy:

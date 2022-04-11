@@ -2,3 +2,6 @@
 artifacts
 .sfdx
 .npmrc
+.env
+.DS_Store
+buildResult.json
