@@ -33,26 +33,25 @@ jobs:
   pool:
     name: 'Replenish Dev Pool'
     runs-on: ubuntu-latest
-    container: ghcr.io/dxatscale/sfpowerscripts:alpha
+    container: ghcr.io/dxatscale/sfpowerscripts:develop
     timeout-minutes: 720 #Set to Maximum Time out
     steps:
 
       - uses: actions/checkout@v2
-
-      - run: |
-          echo 'y' | sfdx plugins:install @dxatscale/sfpowerscripts@alpha 
+        with:
+         fetch-depth: 0
 
       - name: 'Authenticate Dev Hub'
         run: |
           echo "${{ secrets.DEVHUB_SFDX_AUTH_URL }}" > ./authfile
           sfdx auth:sfdxurl:store -f authfile -a devhub
 
-      - name: Authenticate to NPM registry
-        run: |
-           echo "@${{ github.repository_owner }}:registry=https://npm.pkg.github.com" > ~/.npmrc
-           echo  "_authToken=${AUTH_TOKEN}" >> ~/.npmrc
-        env:
-          AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - uses: actions/setup-node@v3
+        with:
+         registry-url: 'https://npm.pkg.github.com'
 
       - name: 'Prepare a pool of scratch orgs'
         run: 'sfdx sfpowerscripts:orchestrator:prepare -f config/devpool.json -v devhub'
+        env:
+         NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        
