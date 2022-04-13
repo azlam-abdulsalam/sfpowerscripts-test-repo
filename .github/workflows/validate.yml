@@ -59,7 +59,7 @@ jobs:
   static:
     name: 'static-analysis-of-Apex-classes-using-PMD'
     runs-on: ubuntu-latest
-    container: ghcr.io/dxatscale/sfpowerscripts:develop
+    container: ghcr.io/azlam-abdulsalam/sfpowerscripts:98fd138c9b5acb4a9e14f4bba50539232c520e6e86b52f8b4acd914b55599672
     steps:
       - uses: actions/checkout@v2
         with:
