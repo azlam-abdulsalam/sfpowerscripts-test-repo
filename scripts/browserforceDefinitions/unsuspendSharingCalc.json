@@ -1,0 +1,8 @@
+{
+    "$schema": "https://raw.githubusercontent.com/amtrack/sfdx-browserforce-plugin/master/src/plugins/schema.json",
+    "settings": {
+      "deferSharingCalculation": {
+        "suspend": false
+      }
+    }
+}
