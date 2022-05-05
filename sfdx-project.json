@@ -1,16 +1,6 @@
 {
     "packageDirectories": [
         {
-            "path": "./src-env-specific-pre",
-            "package": "src-env-specific-pre",
-            "versionNumber": "2.0.0.0",
-            "alwaysDeploy": true,
-             "assignPermSetsPostDeployment": [
-                "DeferSharingRulesCalculation"
-            ],
-            "postDeploymentScript": "scripts/suspendDeferSharingCalc.sh"
-        },
-        {
             "path": "./src-env-specific-alias-pre",
             "package": "src-env-specific-alias-pre",
             "versionNumber": "1.0.0.0",
