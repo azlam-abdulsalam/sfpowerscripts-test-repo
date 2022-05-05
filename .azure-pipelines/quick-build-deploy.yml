@@ -108,7 +108,7 @@ stages:
                 - task: CmdLine@2
                   displayName: 'Deploy packages to dev'
                   inputs:
-                      script: 'sfdx sfpowerscripts:orchestrator:deploy -u dev'
+                      script: 'sfdx sfpowerscripts:orchestrator:deploy -u dev --loglevel=trace'
 
 
 #Build all packages (unlocked/source/data) 

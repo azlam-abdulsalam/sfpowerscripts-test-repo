@@ -1,17 +1,6 @@
 {
     "packageDirectories": [
         {
-            "path": "./src-env-specific-pre",
-            "package": "src-env-specific-pre",
-            "versionNumber": "1.0.0.0",
-            "ignoreOnStage": [
-                "prepare",
-                "validate",
-                "quickbuild",
-                "build"
-            ]
-        },
-        {
             "path": "./src-env-specific-alias-pre",
             "package": "src-env-specific-alias-pre",
             "versionNumber": "1.0.0.0",
@@ -28,7 +17,8 @@
             "package": "core",
             "versionName": "Version 1.0.3",
             "versionNumber": "1.0.3.0",
-            "alwaysDeploy": true
+            "alwaysDeploy": true,
+            "postDeploymentScript": "scripts/unSuspendDeferSharingCalc.sh"
         },
         {
             "path": "./src-ui",

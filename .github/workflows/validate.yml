@@ -34,7 +34,7 @@ on:
 
 
 jobs:
-  validate-fast-feedbac:
+  validate-fast-feedback:
     name: 'Validate Changed Packages using fast feedback'
     runs-on: ubuntu-latest
     container: ghcr.io/dxatscale/sfpowerscripts:develop
@@ -54,7 +54,7 @@ jobs:
 
       # Validate source and trigger test
       - name: 'Push source to scratch org'
-        run: 'sfdx sfpowerscripts:orchestrator:validate -p ci -v devhub -x --fastfeedback'
+        run: 'sfdx sfpowerscripts:orchestrator:validate -p ci -v devhub -x --fastfeedback --basebranch=main'
 
   static:
     name: 'static-analysis-of-Apex-classes-using-PMD'

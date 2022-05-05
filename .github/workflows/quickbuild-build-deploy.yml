@@ -102,8 +102,10 @@ jobs:
 
       - name: 'Deploy to DEV'
         run: |
+          export NODE_OPTIONS='--trace-warnings'
           sfdx sfpowerkit:package:dependencies:install -u dev -v devhub -w 120 -r
           sfdx sfpowerscripts:orchestrator:deploy -u dev --skipifalreadyinstalled -g "::group::,::endgroup::" 
+
 
   buildAndPublish:
     name: 'Build and Publish'
