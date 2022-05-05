@@ -98,6 +98,61 @@
                 }
             ],
             "hashId": "899c59f75b4a97bfaa036a401e1d3cf50b0e5117"
+        },
+        {
+            "names": [
+                "Release-2.0"
+            ],
+            "buildNumber": 3,
+            "workItems": {},
+            "artifacts": [
+                {
+                    "name": "core",
+                    "from": "4698d2ab",
+                    "to": "ffd301e6",
+                    "version": "1.0.3.1",
+                    "latestCommitId": "50ccf860",
+                    "commits": [
+                        {
+                            "commitId": "50ccf860",
+                            "date": "2022-04-01T15:44:57+11:00",
+                            "author": "Azlam",
+                            "message": "reduce field size",
+                            "body": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "src-env-specific-pre",
+                    "to": "ffd301e6",
+                    "version": "2.0.0.1",
+                    "latestCommitId": "1bbc38ad",
+                    "commits": [
+                        {
+                            "commitId": "1bbc38ad",
+                            "date": "2022-04-12T06:39:01+10:00",
+                            "author": "Azlam",
+                            "message": "Delete LiveMessage.settings-meta.xml",
+                            "body": ""
+                        },
+                        {
+                            "commitId": "31b3e914",
+                            "date": "2022-04-11T23:37:35+10:00",
+                            "author": "azlam-abdulsalam",
+                            "message": "add additional packages",
+                            "body": ""
+                        },
+                        {
+                            "commitId": "28ab1f91",
+                            "date": "2021-08-28T17:15:31+10:00",
+                            "author": "azlam-abdulsalam",
+                            "message": "Initial Version of templates",
+                            "body": ""
+                        }
+                    ]
+                }
+            ],
+            "hashId": "4c4a71ad8fa0e3ebd67992f8e9d714c82520a8d3"
         }
     ]
 }
