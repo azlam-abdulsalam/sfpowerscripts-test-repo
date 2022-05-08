@@ -5,7 +5,7 @@
             "package": "src-env-specific-pre",
             "versionNumber": "2.0.0.0",
             "alwaysDeploy": true,
-             "assignPermSetsPostDeployment": [
+            "assignPermSetsPostDeployment": [
                 "DeferSharingRulesCalculation"
             ],
             "postDeploymentScript": "scripts/suspendDeferSharingCalc.sh"
@@ -89,7 +89,7 @@
     "sfdcLoginUrl": "https://login.salesforce.com",
     "sourceApiVersion": "52.0",
     "packageAliases": {
+        "feature-mgmt": "0Ho8v0000000006CAA"
     },
-    "plugins": {
-    }
+    "plugins": {}
 }
