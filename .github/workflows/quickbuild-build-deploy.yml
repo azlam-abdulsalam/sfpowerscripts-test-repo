@@ -111,7 +111,7 @@ jobs:
     name: 'Build and Publish'
     runs-on: ubuntu-latest
     container: ghcr.io/dxatscale/sfpowerscripts:develop
-    needs: deploy
+    needs: quickbuild
     concurrency: build 
     steps:
       - uses: actions/checkout@v2
