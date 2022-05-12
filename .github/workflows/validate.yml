@@ -34,10 +34,10 @@ on:
 
 
 jobs:
-  validate:
-    name: 'Validate Changed Packages'
+  validate-fast-feedback:
+    name: 'Validate Changed Packages using fast feedback'
     runs-on: ubuntu-latest
-    container: ghcr.io/dxatscale/sfpowerscripts:13.0.0-2093743341
+    container: ghcr.io/dxatscale/sfpowerscripts:develop
 
     steps:
       - uses: actions/checkout@v2
@@ -54,12 +54,12 @@ jobs:
 
       # Validate source and trigger test
       - name: 'Push source to scratch org'
-        run: 'sfdx sfpowerscripts:orchestrator:validate -p ci -v devhub -x'
+        run: 'sfdx sfpowerscripts:orchestrator:validate -p ci -v devhub -x --fastfeedback --basebranch=main'
 
   static:
     name: 'static-analysis-of-Apex-classes-using-PMD'
     runs-on: ubuntu-latest
-    container: ghcr.io/dxatscale/sfpowerscripts:13.0.0-2093743341
+    container: ghcr.io/dxatscale/sfpowerscripts:develop
     steps:
       - uses: actions/checkout@v2
         with:
@@ -73,7 +73,7 @@ jobs:
   validate-package-coverage:
     name: 'validate metadata coverage for unlocked packages'
     runs-on: ubuntu-latest
-    container: ghcr.io/dxatscale/sfpowerscripts:13.0.0-2093743341
+    container: ghcr.io/dxatscale/sfpowerscripts:develop
     steps:
       - uses: actions/checkout@v2
         with:
@@ -83,3 +83,27 @@ jobs:
         shell: bash
         run: |
           sfdx sfpowerkit:package:valid -n core-crm -b StandardValueSet
+
+  validate:
+    name: 'Validate Changed Packages thoroughly'
+    runs-on: ubuntu-latest
+    environment:
+      name: validate
+    container: ghcr.io/dxatscale/sfpowerscripts:develop
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+
+      - name: 'Authenticate Dev Hub'
+        run: |
+          echo "${{ secrets.DEVHUB_SFDX_AUTH_URL }}" > ./authfile
+          sfdx auth:sfdxurl:store -f authfile -a devhub
+
+
+
+      # Validate source and trigger test
+      - name: 'Push source to scratch org'
+        run: 'sfdx sfpowerscripts:orchestrator:validate -p ci -v devhub -x'

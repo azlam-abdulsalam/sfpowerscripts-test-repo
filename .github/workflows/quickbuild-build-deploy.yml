@@ -43,7 +43,7 @@ jobs:
   quickbuild:
     name: 'Quickbuild packages'
     runs-on: ubuntu-latest
-    container: ghcr.io/dxatscale/sfpowerscripts:13.0.0-2093743341
+    container: ghcr.io/dxatscale/sfpowerscripts:develop
     steps:
       - uses: actions/checkout@v2
         with:
@@ -75,7 +75,7 @@ jobs:
   deploy:
     name: 'Deploy to Dev'
     runs-on: ubuntu-latest
-    container: ghcr.io/dxatscale/sfpowerscripts:13.0.0-2093743341
+    container: ghcr.io/dxatscale/sfpowerscripts:develop
     needs: quickbuild
     environment:
       name: DEV
@@ -102,14 +102,16 @@ jobs:
 
       - name: 'Deploy to DEV'
         run: |
+          export NODE_OPTIONS='--trace-warnings'
           sfdx sfpowerkit:package:dependencies:install -u dev -v devhub -w 120 -r
-          sfdx sfpowerscripts:orchestrator:deploy -u dev --skipifalreadyinstalled -g "::group::,::endgroup::" 
+          sfdx sfpowerscripts:orchestrator:deploy -u dev --loglevel=trace --skipifalreadyinstalled -g "::group::,::endgroup::" 
+
 
   buildAndPublish:
     name: 'Build and Publish'
     runs-on: ubuntu-latest
-    container: ghcr.io/dxatscale/sfpowerscripts:13.0.0-2093743341
-    needs: deploy
+    container: ghcr.io/dxatscale/sfpowerscripts:develop
+    needs: quickbuild
     concurrency: build 
     steps:
       - uses: actions/checkout@v2

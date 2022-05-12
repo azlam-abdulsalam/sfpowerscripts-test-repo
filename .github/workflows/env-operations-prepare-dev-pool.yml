@@ -33,7 +33,7 @@ jobs:
   pool:
     name: 'Replenish Dev Pool'
     runs-on: ubuntu-latest
-    container: ghcr.io/dxatscale/sfpowerscripts:13.0.0-2093743341
+    container: ghcr.io/dxatscale/sfpowerscripts:develop
     timeout-minutes: 720 #Set to Maximum Time out
     steps:
 
