@@ -25,8 +25,8 @@
         {
             "path": "./src/frameworks/feature-mgmt",
             "package": "feature-mgmt",
-            "versionName": "Version 1.0.3",
-            "versionNumber": "1.0.3.NEXT"
+            "versionName": "Version 1.0.4",
+            "versionNumber": "1.0.4.NEXT"
         },
         {
             "path": "./src/core-crm",
