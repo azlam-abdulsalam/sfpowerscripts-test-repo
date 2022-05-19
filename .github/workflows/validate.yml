@@ -37,7 +37,7 @@ jobs:
   validate-fast-feedback:
     name: 'Validate Changed Packages using fast feedback'
     runs-on: ubuntu-latest
-    container: ghcr.io/dxatscale/sfpowerscripts:3c8abae0d7e039b403999c66db7e4111520acc989775b0bcbb2d936f2efdd801
+    container: ghcr.io/dxatscale/sfpowerscripts:alpha
 
     steps:
       - uses: actions/checkout@v2
