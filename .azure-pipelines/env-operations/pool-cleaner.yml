@@ -35,7 +35,7 @@ variables:
 jobs:
   - job: 
 #The docker container contains sfpowerscripts and the dependencies it needs to run, # refer to https://hub.docker.com/r/dxatscale/sfpowerscripts                  
-        container: ghcr.io/dxatscale/sfpowerscripts:develop
+        container: ghcr.io/dxatscale/sfpowerscripts-rc:develop
     displayName: "Delete Dev Pool"
     steps:
     
@@ -54,7 +54,7 @@ jobs:
 # Drop all scratch orgs in  the case of CI pool, its better to recreate every time
   - job: 
 #The docker container contains sfpowerscripts and the dependencies it needs to run, # refer to https://hub.docker.com/r/dxatscale/sfpowerscripts                  
-        container: ghcr.io/dxatscale/sfpowerscripts:develop
+        container: ghcr.io/dxatscale/sfpowerscripts-rc:develop
     displayName: "Delete CI Pool"
     dependsOn: []
     steps:
