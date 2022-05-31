@@ -33,7 +33,7 @@ on:
 
 jobs:
 
-  pool-ci-snapshot-pool:
+ pool-ci-snapshot-pool:
     name: 'Replenish CI Snapshot Pool'
     runs-on: ubuntu-latest
     container: ghcr.io/dxatscale/sfpowerscripts-rc:develop
