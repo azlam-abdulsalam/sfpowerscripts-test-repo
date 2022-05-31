@@ -72,6 +72,7 @@ jobs:
     runs-on: ubuntu-latest
     container: ghcr.io/dxatscale/sfpowerscripts-rc:develop
     timeout-minutes: 720 #Set to Maximum Time out
+    needs: pool-ci-snapshot-pool
 
     steps:
 
