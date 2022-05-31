@@ -1,0 +1,103 @@
+# DX@Scale CI/CD Template for GitHub
+#----------------------------------------------------------------------------------------------------
+# Maintained by @aly76 for DX@Scale
+# Follows reference pipeline available at docs.dxatscale.io
+# 
+#-----------------------------------------------------------------------------------------------------
+# To know more about dxatscale, visit https://docs.dxatscale.io
+# To know more on sfpowerscripts, visit- https://sfpowerscripts.dxatscale.io/
+# To know more on sfpowerkit, visit- https://github.com/Accenture/sfpowerkit
+
+
+# This pipeline creates the CI pools used during validate in a daisy chain manner
+
+
+name: 'Replenish CI Pools - Auto Triggered - Daisy Chain'
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 14 * * *'
+
+
+#Set the environment variables for tracking metrics
+#env:
+  #SFPOWERSCRIPTS_NEWRELIC: 'true'
+  #SFPOWERSCRIPTS_NEWRELIC_API_KEY: '${{ secrets.NEWRELIC_INGEST_KEY }}'
+  #SFPOWERSCRIPTS_DATADOG: 'true'
+  #SFPOWERSCRIPTS_DATADOG_HOST: '${{ secrets.DATADOG_HOST }}'
+  #SFPOWERSCRIPTS_DATADOG_API_KEY: '${{ secrets.DATADOG_API_KEY }}'
+
+
+
+
+jobs:
+
+  pool-ci-snapshot-pool:
+    name: 'Replenish CI Snapshot Pool'
+    runs-on: ubuntu-latest
+    container: ghcr.io/dxatscale/sfpowerscripts-rc:develop
+    timeout-minutes: 720 #Set to Maximum Time out
+
+    steps:
+
+      - uses: actions/checkout@v2
+        with:
+         fetch-depth: 0
+
+   
+      - name: 'Authenticate Dev Hub'
+        run: |
+          echo "${{ secrets.DEVHUB_SFDX_AUTH_URL }}" > ./authfile
+          sfdx auth:sfdxurl:store -f authfile -a devhub
+
+      - uses: actions/setup-node@v3
+        with:
+         registry-url: 'https://npm.pkg.github.com'
+
+      - name: 'Prepare a pool of scratch orgs'
+        run: 'sfdx sfpowerscripts:orchestrator:prepare -f config/cipool1.json -v devhub'
+        env:
+         NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        
+
+      # Publish artifacts
+      - uses: actions/upload-artifact@v2
+        with:
+          name: pool-logs
+          path: .sfpowerscripts/prepare_logs
+
+ pool-ci2-pool:
+    name: 'Replenish CI2 Pool'
+    runs-on: ubuntu-latest
+    container: ghcr.io/dxatscale/sfpowerscripts-rc:develop
+    timeout-minutes: 720 #Set to Maximum Time out
+
+    steps:
+
+      - uses: actions/checkout@v2
+        with:
+         fetch-depth: 0
+
+   
+      - name: 'Authenticate Dev Hub'
+        run: |
+          echo "${{ secrets.DEVHUB_SFDX_AUTH_URL }}" > ./authfile
+          sfdx auth:sfdxurl:store -f authfile -a devhub
+
+      - uses: actions/setup-node@v3
+        with:
+         registry-url: 'https://npm.pkg.github.com'
+
+      - name: 'Prepare a pool of scratch orgs'
+        run: 'sfdx sfpowerscripts:orchestrator:prepare -f config/cipool2.json -v devhub'
+        env:
+         NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        
+
+      # Publish artifacts
+      - uses: actions/upload-artifact@v2
+        with:
+          name: pool-logs
+          path: .sfpowerscripts/prepare_logs
+
