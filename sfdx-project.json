@@ -1,15 +1,6 @@
 {
     "packageDirectories": [
-        {
-            "path": "./src-env-specific-pre",
-            "package": "src-env-specific-pre",
-            "versionNumber": "2.0.0.0",
-            "alwaysDeploy": true,
-             "assignPermSetsPostDeployment": [
-                "DeferSharingRulesCalculation"
-            ],
-            "postDeploymentScript": "scripts/suspendDeferSharingCalc.sh"
-        },
+       
         {
             "path": "./src-env-specific-alias-pre",
             "package": "src-env-specific-alias-pre",
@@ -32,9 +23,12 @@
             "path": "./src/core-crm",
             "package": "core",
             "versionName": "Version 1.0.3",
-            "versionNumber": "1.0.3.0",
-            "alwaysDeploy": true,
-            "postDeploymentScript": "scripts/unSuspendDeferSharingCalc.sh"
+            "versionNumber": "1.0.3.1",
+            "dependencies": [
+                {
+                    "package": "sfdc-logging@0.1.0.18"
+                }
+            ]
         },
         {
             "path": "./src/test3-pkg",
@@ -96,8 +90,8 @@
     "sfdcLoginUrl": "https://login.salesforce.com",
     "sourceApiVersion": "52.0",
     "packageAliases": {
-         "feature-mgmt": "0Ho8v0000000006CAA"
+        "feature-mgmt": "0Ho8v0000000006CAA",
+        "sfdc-logging@0.1.0.18": "04t1P000000IwqqQAC"
     },
-    "plugins": {
-    }
+    "plugins": {}
 }

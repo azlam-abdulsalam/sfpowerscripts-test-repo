@@ -1,0 +1,11 @@
+{
+  "$schema": "https://raw.githubusercontent.com/Accenture/sfpowerscripts/develop/packages/sfpowerscripts-cli/resources/schemas/pooldefinition.schema.json",
+  "tag": "ci2",
+   "maxAllocation": 5,
+   "expiry": 2,
+   "batchSize": 5,
+   "snapshotPool":"ci-snapshot",
+   "configFilePath": "config/project-scratch-def.json",
+   "enableSourceTracking": false,
+   "installAll": true
+ }
