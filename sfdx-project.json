@@ -17,7 +17,8 @@
             "path": "./src/frameworks/feature-mgmt",
             "package": "feature-mgmt",
             "versionName": "Version 1.0.3",
-            "versionNumber": "1.0.3.0"
+            "versionNumber": "1.0.4.0",
+            "isOptimizedDeployment":false
         },
         {
             "path": "./src/core-crm",
