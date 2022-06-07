@@ -84,7 +84,6 @@
     "sfdcLoginUrl": "https://login.salesforce.com",
     "sourceApiVersion": "52.0",
     "packageAliases": {
-        "feature-mgmt": "0Ho8v0000000006CAA",
         "sfdc-logging@0.1.0.18": "04t1P000000IwqqQAC"
     },
     "plugins": {}
