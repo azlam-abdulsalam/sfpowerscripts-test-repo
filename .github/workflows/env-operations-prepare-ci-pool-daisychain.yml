@@ -36,7 +36,7 @@ jobs:
  pool-ci-snapshot-pool:
     name: 'Replenish CI Snapshot Pool'
     runs-on: ubuntu-latest
-    container: ghcr.io/dxatscale/sfpowerscripts-rc:hotfix
+    container: ghcr.io/dxatscale/sfpowerscripts-rc:main
     timeout-minutes: 720 #Set to Maximum Time out
 
     steps:
@@ -70,7 +70,7 @@ jobs:
  pool-ci2-pool:
     name: 'Replenish CI2 Pool'
     runs-on: ubuntu-latest
-    container: ghcr.io/dxatscale/sfpowerscripts-rc:hotfix
+    container: ghcr.io/dxatscale/sfpowerscripts-rc:main
     timeout-minutes: 720 #Set to Maximum Time out
     needs: pool-ci-snapshot-pool
 
