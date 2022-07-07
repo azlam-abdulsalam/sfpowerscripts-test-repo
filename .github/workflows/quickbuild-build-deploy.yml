@@ -16,8 +16,8 @@ name: 'CI Pipeline - Auto Triggered'
 on:
   push:
     branches:
-      - main
-      - release/**
+      - hotfix-test
+
 
 
   workflow_dispatch:
@@ -43,7 +43,7 @@ jobs:
   quickbuild:
     name: 'Quickbuild packages'
     runs-on: ubuntu-latest
-    container: ghcr.io/dxatscale/sfpowerscripts-rc:develop
+    container: ghcr.io/dxatscale/sfpowerscripts-rc:hotfix
     steps:
       - uses: actions/checkout@v3
         with:
@@ -75,7 +75,7 @@ jobs:
   deploy:
     name: 'Deploy to Dev'
     runs-on: ubuntu-latest
-    container: ghcr.io/dxatscale/sfpowerscripts-rc:develop
+    container: ghcr.io/dxatscale/sfpowerscripts-rc:hotfix
     needs: quickbuild
     environment:
       name: DEV
@@ -110,7 +110,7 @@ jobs:
   buildAndPublish:
     name: 'Build and Publish'
     runs-on: ubuntu-latest
-    container: ghcr.io/dxatscale/sfpowerscripts-rc:develop
+    container: ghcr.io/dxatscale/sfpowerscripts-rc:hotfix
     needs: quickbuild
     concurrency: build 
     steps:
