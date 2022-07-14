@@ -1,5 +1,5 @@
 {
-  "$schema": "https://raw.githubusercontent.com/Accenture/sfpowerscripts/develop/packages/sfpowerscripts-cli/resources/schemas/pooldefinition.schema.json",
+  "$schema": "https://raw.githubusercontent.com/dxatscale/sfpowerscripts/develop/packages/sfpowerscripts-cli/resources/schemas/pooldefinition.schema.json",
   "tag": "ci",
    "maxAllocation": 5,
    "expiry": 2,
@@ -9,7 +9,7 @@
    "installAll": true,
     "fetchArtifacts": {
       "npm": {
-        "scope": "azlam-abdulsalam"
+        "scope": "dxatscale"
       }
     }
  

@@ -16,14 +16,14 @@
         {
             "path": "./src/frameworks/feature-mgmt",
             "package": "feature-mgmt",
-            "versionName": "Version 1.0.3",
-            "versionNumber": "1.0.3.4"
+            "versionName": "Version 1.0.4",
+            "versionNumber": "1.0.4.NEXT"
         },
         {
             "path": "./src/core-crm",
             "package": "core",
-            "versionName": "Version 1.0.3",
-            "versionNumber": "1.0.3.0",
+            "versionName": "Version 1.0.4",
+            "versionNumber": "1.0.4.0",
             "dependencies": [
                 {
                     "package": "sfdc-logging@0.1.0.18"
