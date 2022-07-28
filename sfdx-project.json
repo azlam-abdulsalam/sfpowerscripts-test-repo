@@ -17,6 +17,8 @@
             "path": "./src/frameworks/feature-mgmt",
             "package": "feature-mgmt",
             "versionName": "Version 1.0.4",
+            "preDeploymentScript": "scripts/suspendDeferSharingCalc.sh",
+            "posDeploymentScript": "scripts/unsuspendDeferSharingCalc.sh",
             "versionNumber": "1.0.4.NEXT"
         },
         {
