@@ -18,7 +18,7 @@
             "package": "feature-mgmt",
             "versionName": "Version 1.0.4",
             "preDeploymentScript": "scripts/suspendDeferSharingCalc.sh",
-            "postDeploymentScript": "scripts/unsuspendDeferSharingCalc.sh",
+            "postDeploymentScript": "scripts/unSuspendDeferSharingCalc.sh",
             "versionNumber": "1.0.4.NEXT"
         },
         {
