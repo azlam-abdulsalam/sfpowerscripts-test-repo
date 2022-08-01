@@ -38,6 +38,24 @@
             ]
         },
         {
+            "path": "./src/core-crm-2",
+            "package": "core2",
+            "versionName": "Version 1.0.5",
+            "versionNumber": "1.0.5.NEXT",
+            "dependencies": [
+                {
+                    "package": "sfdc-logging@0.1.0.18"
+                },
+                {
+                     "package": "feature-mgmt",
+                     "versionNumber": "1.0.4.LATEST"
+                },
+                {
+                    "package": "PureCloud"
+                }
+            ]
+        },
+        {
             "path": "./src-ui",
             "package": "src-ui",
             "versionNumber": "1.1.0.0",
