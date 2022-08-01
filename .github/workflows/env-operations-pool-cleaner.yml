@@ -49,7 +49,15 @@ jobs:
 
 
       - name: 'Drop the pool'
-        run: 'sfdx sfpowerscripts:pool:delete -t dev -v devhub'
+        run: |
+          wget https://raw.github.com/lehmannro/assert.sh/v1.1/assert.sh
+          chmod +x assert.sh
+          sfdx sfpowerscripts:pool:delete -t dev -v devhub
+          assert "sfdx sfpowerscripts:pool:list -t dev -v devhub --json | jq .result.total" 0
+          assert_end drop_dev_pool
+
+
+           
 
   clean-pool-ci:
     name: 'Clean CI Pool'
@@ -69,4 +77,9 @@ jobs:
 
 
       - name: 'Drop the pool'
-        run: 'sfdx sfpowerscripts:pool:delete -t ci -v devhub -a'
+        run: |
+          wget https://raw.github.com/lehmannro/assert.sh/v1.1/assert.sh
+          chmod +x assert.sh
+          sfdx sfpowerscripts:pool:delete -t ci -v devhub
+          assert "sfdx sfpowerscripts:pool:list -t ci -v devhub --json | jq .result.total" 0
+          assert_end drop_ci_pool
