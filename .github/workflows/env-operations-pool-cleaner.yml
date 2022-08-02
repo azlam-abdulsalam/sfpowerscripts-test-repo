@@ -54,7 +54,7 @@ jobs:
         run: |
           sfdx sfpowerscripts:pool:delete -t dev -v devhub
           totalRemaining=$(sfdx sfpowerscripts:pool:list -t dev -v devhub --json | jq .result.total)
-          if [[ $totalRemaining eq 0 ]]
+          if [[ $totalRemaining == 0 ]]
           then
              echo `Test passed`
              exit 0
@@ -84,7 +84,7 @@ jobs:
         run: |
           sfdx sfpowerscripts:pool:delete -t ci -v devhub
           totalRemaining=$(sfdx sfpowerscripts:pool:list -t ci -v devhub --json | jq .result.total)
-          if [[ $totalRemaining eq 0 ]]
+          if [[ $totalRemaining == 0 ]]
           then
              echo `Test passed`
              exit 0
