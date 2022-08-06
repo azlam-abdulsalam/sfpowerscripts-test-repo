@@ -14,9 +14,9 @@
         },
         {
             "path": "./src/frameworks/feature-mgmt",
-            "package": "feature-mgmt",
-            "versionName": "Version 1.0.4",
-            "versionNumber": "1.0.4.NEXT"
+            "package": "feature-mgmt2",
+            "versionName": "Version 1.0.6",
+            "versionNumber": "1.0.6.NEXT"
         },
         {
             "path": "./src/core-crm",
@@ -82,7 +82,7 @@
     "sfdcLoginUrl": "https://login.salesforce.com",
     "sourceApiVersion": "52.0",
     "packageAliases": {
-        "feature-mgmt": "0Ho5f000000GmwrCAC",
+        "feature-mgmt2": "0Ho5f000000GmwrCAC",
         "sfdc-logging@0.1.0.18": "04t1P000000IwqqQAC",
         "core2": "0Ho5f000000Gmz7CAC"
     },
