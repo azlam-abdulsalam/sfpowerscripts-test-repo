@@ -87,7 +87,7 @@
     "sfdcLoginUrl": "https://login.salesforce.com",
     "sourceApiVersion": "52.0",
     "packageAliases": {
-        "feature-mgmt2": "0Ho5f000000GmwrCAC",
+        "feature-mgmt3": "0Ho5f000000GmwrCAC",
         "sfdc-logging@0.1.0.18": "04t1P000000IwqqQAC",
         "core2": "0Ho5f000000Gmz7CAC",
         "test": "0Ho5f000000GmzCCAS"
