@@ -46,11 +46,23 @@ jobs:
         run: |
           echo "${{ secrets.DEVHUB_SFDX_AUTH_URL }}" > ./authfile
           sfdx auth:sfdxurl:store -f authfile -a devhub
+           
+
 
 
       - name: 'Drop the pool'
-        run: 'sfdx sfpowerscripts:pool:delete -t dev -v devhub'
-
+        run: |
+          sfdx sfpowerscripts:pool:delete -t dev -v devhub
+          totalRemaining=$(sfdx sfpowerscripts:pool:list -t dev -v devhub --json | jq .result.total)
+          if [[ $totalRemaining == 0 ]]
+          then
+             echo `Test passed`
+             exit 0
+          else
+             echo `Test Failed`
+             exit 1
+          fi
+        
   clean-pool-ci:
     name: 'Clean CI Pool'
     runs-on: ubuntu-latest
@@ -69,4 +81,14 @@ jobs:
 
 
       - name: 'Drop the pool'
-        run: 'sfdx sfpowerscripts:pool:delete -t ci -v devhub -a'
+        run: |
+          sfdx sfpowerscripts:pool:delete -t ci -v devhub
+          totalRemaining=$(sfdx sfpowerscripts:pool:list -t ci -v devhub --json | jq .result.total)
+          if [[ $totalRemaining == 0 ]]
+          then
+             echo `Test passed`
+             exit 0
+          else
+             echo `Test Failed`
+             exit 1
+          fi
