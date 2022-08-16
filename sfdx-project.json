@@ -1,6 +1,5 @@
 {
     "packageDirectories": [
-       
         {
             "path": "./src-env-specific-alias-pre",
             "package": "src-env-specific-alias-pre",
@@ -15,9 +14,9 @@
         },
         {
             "path": "./src/frameworks/feature-mgmt",
-            "package": "feature-mgmt",
-            "versionName": "Version 1.0.4",
-            "versionNumber": "1.0.4.NEXT"
+            "package": "feature-mgmt3",
+            "versionName": "Version 1.0.6",
+            "versionNumber": "1.0.6.NEXT"
         },
         {
             "path": "./src/frameworks/nebula-logger",
@@ -28,9 +27,9 @@
         },
         {
             "path": "./src/core-crm",
-            "package": "core",
-            "versionName": "Version 1.0.4",
-            "versionNumber": "1.0.4.0",
+            "package": "core2",
+            "versionName": "Version 1.0.5",
+            "versionNumber": "1.0.4.NEXT",
             "dependencies": [
                 {
                     "package": "sfdc-logging@0.1.0.18"
@@ -90,8 +89,10 @@
     "sfdcLoginUrl": "https://login.salesforce.com",
     "sourceApiVersion": "54.0",
     "packageAliases": {
-        "sfdc-logging@0.1.0.18": "04t1P000000IwqqQAC",
         "feature-mgmt": "0Ho8v0000000006CAA"
+        "feature-mgmt3": "0Ho5f000000GmwrCAC",
+        "sfdc-logging@0.1.0.18": "04t1P000000IwqqQAC",
+        "core2": "0Ho5f000000Gmz7CAC"
     },
     "plugins": {}
 }
