@@ -18,7 +18,7 @@
             "versionName": "Version 1.0.6",
             "versionNumber": "1.0.6.NEXT",
             "preDeploymentScript": "scripts/suspendDeferSharingCalc.sh",
-            "postDeploymentScript": "scripts/unSuspendDeferSharingCalc.sh",
+            "postDeploymentScript": "scripts/unSuspendDeferSharingCalc.sh"
         },
         {
             "path": "./src/core-crm",
