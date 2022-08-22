@@ -42,7 +42,7 @@ jobs:
    
       - name: Authenticate to ST sandbox
         run: |
-          echo "${{ secrets.ST_SFDX_AUTH_URL }}" > ./authfile
+          echo "${{ secrets.DEV_SFDX_AUTH_URL }}" > ./authfile
           sfdx auth:sfdxurl:store -f ./authfile -a st
 
       - uses: actions/setup-node@v3
@@ -71,7 +71,7 @@ jobs:
    
       - name: Authenticate to SIT sandbox
         run: |
-          echo "${{ secrets.SIT_SFDX_AUTH_URL }}" > ./authfile
+          echo "${{ secrets.DEV_SFDX_AUTH_URL }}" > ./authfile
           sfdx auth:sfdxurl:store -f ./authfile -a sit
 
       - uses: actions/setup-node@v3
