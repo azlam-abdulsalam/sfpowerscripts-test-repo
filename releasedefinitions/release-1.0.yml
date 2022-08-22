@@ -4,4 +4,5 @@ artifacts:
   core2: LATEST_GIT_TAG
   feature-mgmt3: LATEST_GIT_TAG
 changelog:
-  workItemFilter: "issues/[0-9]+"
+  workItemFilters: 
+   - "issues/[0-9]+"
