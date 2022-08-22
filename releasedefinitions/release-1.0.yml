@@ -1,6 +1,7 @@
 release: "Release-1.0"
 skipIfAlreadyInstalled: true
 artifacts:
-  core: LATEST_GIT_TAG
+  core2: LATEST_GIT_TAG
+  feature-mgmt3: LATEST_GIT_TAG
 changelog:
   workItemFilter: "issues/[0-9]+"
