@@ -1,4 +1,19 @@
-[![st-Release-1.0-2(0)-green](https://img.shields.io/static/v1?label=st&message=Release-1.0-2(0)&color=green)](#899c59f75b4a97bfaa036a401e1d3cf50b0e5117) [![sit-Release-1.0-2(0)-green](https://img.shields.io/static/v1?label=sit&message=Release-1.0-2(0)&color=green)](#899c59f75b4a97bfaa036a401e1d3cf50b0e5117) 
+[![st-Release-1.0-Release-1.0-3(0)-green](https://img.shields.io/static/v1?label=st&message=Release-1.0-Release-1.0-3(0)&color=green)](#808496ac73ce4559c90bd7c5f086d29796ed5e50) [![sit-Release-1.0-2(0)-green](https://img.shields.io/static/v1?label=sit&message=Release-1.0-2(0)&color=green)](#899c59f75b4a97bfaa036a401e1d3cf50b0e5117) 
+<a id=808496ac73ce4559c90bd7c5f086d29796ed5e50></a>
+# Release-1.0-Release-1.0-3
+### Artifacts :package:
+- **feature-mgmt3**     v1.0.6.8 (c0c7ea60)
+
+### Work Items :gem:
+N/A
+
+### Commits :book:
+
+#### feature-mgmt3
+| Date       | Time     | Commit ID | Commit Message              |
+| ---------- | -------- | --------- | --------------------------- |
+| 08/05/2022 | 08:01:06 | 71ed6744  | Add a new package as source |
+
 <a id=899c59f75b4a97bfaa036a401e1d3cf50b0e5117></a>
 # Release-1.0-2
 ### Artifacts :package:
