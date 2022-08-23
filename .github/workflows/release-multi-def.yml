@@ -11,7 +11,7 @@
 
 # This pipeline is used to release a set of packages into respective environments
 
-name: 'CD Pipeline - User Triggered'
+name: 'CD Pipeline - Multi defn'
 
 
 on:
