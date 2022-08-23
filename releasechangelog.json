@@ -50,14 +50,21 @@
                     ],
                     "buildNumber": 2,
                     "hashId": "899c59f75b4a97bfaa036a401e1d3cf50b0e5117"
+                },
+                {
+                    "names": [
+                        "Release-1.0-Release-1.0"
+                    ],
+                    "buildNumber": 3,
+                    "hashId": "808496ac73ce4559c90bd7c5f086d29796ed5e50"
                 }
             ],
             "latestRelease": {
                 "names": [
-                    "Release-1.0"
+                    "Release-1.0-Release-1.0"
                 ],
-                "buildNumber": 2,
-                "hashId": "899c59f75b4a97bfaa036a401e1d3cf50b0e5117"
+                "buildNumber": 3,
+                "hashId": "808496ac73ce4559c90bd7c5f086d29796ed5e50"
             },
             "retryCount": 0
         }
