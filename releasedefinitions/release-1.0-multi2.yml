@@ -1,0 +1,7 @@
+release: "Release-1.0"
+skipIfAlreadyInstalled: true
+artifacts:
+  feature-mgmt3: LATEST_GIT_TAG
+changelog:
+  workItemFilters: 
+   - "issues/[0-9]+"
