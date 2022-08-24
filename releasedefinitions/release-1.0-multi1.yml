@@ -2,6 +2,8 @@ release: "Release-multi1-1.0"
 skipIfAlreadyInstalled: true
 artifacts:
   core2: LATEST_GIT_TAG
+packageDependencies:
+  sfdc-logging@0.1.0.18: 04t1P000000IwqqQAC
 changelog:
   workItemFilters: 
    - "issues/[0-9]+"
