@@ -1,4 +1,20 @@
-[![st-Release-1.0-Release-1.0-3(0)-green](https://img.shields.io/static/v1?label=st&message=Release-1.0-Release-1.0-3(0)&color=green)](#808496ac73ce4559c90bd7c5f086d29796ed5e50) [![sit-Release-1.0-Release-1.0-3(0)-green](https://img.shields.io/static/v1?label=sit&message=Release-1.0-Release-1.0-3(0)&color=green)](#808496ac73ce4559c90bd7c5f086d29796ed5e50) 
+[![st-Release-multi1-1.0-Release-multi2-1.0-4(0)-green](https://img.shields.io/static/v1?label=st&message=Release-multi1-1.0-Release-multi2-1.0-4(0)&color=green)](#201503a3d287d38775c746626f807122600a4047) [![sit-Release-1.0-Release-1.0-3(0)-green](https://img.shields.io/static/v1?label=sit&message=Release-1.0-Release-1.0-3(0)&color=green)](#808496ac73ce4559c90bd7c5f086d29796ed5e50) 
+<a id=201503a3d287d38775c746626f807122600a4047></a>
+# Release-multi1-1.0-Release-multi2-1.0-4
+### Artifacts :package:
+- **core2**     v1.0.4.9 (c0c7ea60)
+
+### Work Items :gem:
+N/A
+
+### Commits :book:
+
+#### core2
+| Date       | Time     | Commit ID | Commit Message               |
+| ---------- | -------- | --------- | ---------------------------- |
+| 01/04/2022 | 04:44:57 | 50ccf860  | reduce field size            |
+| 28/08/2021 | 07:15:31 | 28ab1f91  | Initial Version of templates |
+
 <a id=808496ac73ce4559c90bd7c5f086d29796ed5e50></a>
 # Release-1.0-Release-1.0-3
 ### Artifacts :package:

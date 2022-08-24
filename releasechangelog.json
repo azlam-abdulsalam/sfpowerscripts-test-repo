@@ -23,14 +23,21 @@
                     ],
                     "buildNumber": 3,
                     "hashId": "808496ac73ce4559c90bd7c5f086d29796ed5e50"
+                },
+                {
+                    "names": [
+                        "Release-multi1-1.0-Release-multi2-1.0"
+                    ],
+                    "buildNumber": 4,
+                    "hashId": "201503a3d287d38775c746626f807122600a4047"
                 }
             ],
             "latestRelease": {
                 "names": [
-                    "Release-1.0-Release-1.0"
+                    "Release-multi1-1.0-Release-multi2-1.0"
                 ],
-                "buildNumber": 3,
-                "hashId": "808496ac73ce4559c90bd7c5f086d29796ed5e50"
+                "buildNumber": 4,
+                "hashId": "201503a3d287d38775c746626f807122600a4047"
             },
             "retryCount": 0
         },
@@ -137,6 +144,46 @@
                 }
             ],
             "hashId": "808496ac73ce4559c90bd7c5f086d29796ed5e50"
+        },
+        {
+            "names": [
+                "Release-multi1-1.0-Release-multi2-1.0"
+            ],
+            "buildNumber": 4,
+            "workItems": {},
+            "artifacts": [
+                {
+                    "name": "core2",
+                    "to": "c0c7ea60",
+                    "version": "1.0.4.9",
+                    "latestCommitId": "50ccf860",
+                    "commits": [
+                        {
+                            "commitId": "50ccf860",
+                            "date": "2022-04-01T15:44:57+11:00",
+                            "author": "Azlam",
+                            "message": "reduce field size",
+                            "body": ""
+                        },
+                        {
+                            "commitId": "28ab1f91",
+                            "date": "2021-08-28T17:15:31+10:00",
+                            "author": "azlam-abdulsalam",
+                            "message": "Initial Version of templates",
+                            "body": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "feature-mgmt3",
+                    "from": "c0c7ea60",
+                    "to": "c0c7ea60",
+                    "version": "1.0.6.8",
+                    "latestCommitId": "71ed6744",
+                    "commits": []
+                }
+            ],
+            "hashId": "201503a3d287d38775c746626f807122600a4047"
         }
     ]
 }
