@@ -48,6 +48,7 @@ jobs:
       - uses: actions/checkout@v3
         with:
           fetch-depth: 0
+          persi
 
       - name: 'Authenticate Dev Hub'
         run: |
@@ -58,6 +59,8 @@ jobs:
       - name: 'Create packages buildAll ${{ github.event.inputs.isbuildall }}'
         id: sfpowerscripts-build
         run: |
+          echo $PWD
+          
           git config --list
           git config remote.origin.url
           
