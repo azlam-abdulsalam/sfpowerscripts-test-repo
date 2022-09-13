@@ -59,10 +59,7 @@ jobs:
         id: sfpowerscripts-build
         run: |
           echo $PWD
-          git config --global --add safe.directory /__w/sfpowerscripts-test-repo/sfpowerscripts-test-repo
-          git config --list
-          git config remote.origin.url
-          
+
           echo "${{ github.event.inputs.isbuildall }}"
           if [ "${{ github.event.inputs.isbuildall }}" = "yes" ]; then
             sfdx sfpowerscripts:orchestrator:quickbuild -v devhub --branch ${GITHUB_REF#refs/heads/} --buildnumber ${GITHUB_RUN_ID}
