@@ -51,13 +51,14 @@ jobs:
 
       - name: 'Authenticate Dev Hub'
         run: |
-     
+         
           echo "${{ secrets.DEVHUB_SFDX_AUTH_URL }}" > ./authfile
           sfdx auth:sfdxurl:store -f authfile -a devhub
 
       - name: 'Create packages buildAll ${{ github.event.inputs.isbuildall }}'
         id: sfpowerscripts-build
         run: |
+          git config remote.origin.url
           echo "${{ github.event.inputs.isbuildall }}"
           if [ "${{ github.event.inputs.isbuildall }}" = "yes" ]; then
             sfdx sfpowerscripts:orchestrator:quickbuild -v devhub --branch ${GITHUB_REF#refs/heads/} --buildnumber ${GITHUB_RUN_ID}
