@@ -59,6 +59,7 @@ jobs:
         id: sfpowerscripts-build
         run: |
           echo $PWD
+          git config --global --add orchestrator sfpowerscripts
 
           echo "${{ github.event.inputs.isbuildall }}"
           if [ "${{ github.event.inputs.isbuildall }}" = "yes" ]; then
