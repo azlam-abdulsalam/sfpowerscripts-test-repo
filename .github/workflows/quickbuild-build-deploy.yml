@@ -18,6 +18,7 @@ on:
     branches:
       - main
       - release/**
+      - test-prod
 
 
   workflow_dispatch:
@@ -43,7 +44,7 @@ jobs:
   quickbuild:
     name: 'Quickbuild packages'
     runs-on: ubuntu-latest
-    container: ghcr.io/dxatscale/sfpowerscripts-rc:develop
+    container: ghcr.io/dxatscale/sfpowerscripts:latest
     steps:
       - uses: actions/checkout@v3
         with:
